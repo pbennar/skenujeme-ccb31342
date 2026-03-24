@@ -9,10 +9,27 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1200px",
       },
     },
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
+      fontSize: {
+        'micro': ['6px', { lineHeight: '1.4' }],
+        'tiny': ['7px', { lineHeight: '1.4' }],
+        'xs-nav': ['8px', { lineHeight: '1.4', letterSpacing: '0.08em' }],
+        'body': ['10px', { lineHeight: '1.6' }],
+        'body-lg': ['11px', { lineHeight: '1.6' }],
+        'box-title': ['12px', { lineHeight: '1.3' }],
+        'heading-sm': ['14px', { lineHeight: '1.3' }],
+        'heading-md': ['16px', { lineHeight: '1.25' }],
+        'heading-lg': ['18px', { lineHeight: '1.2' }],
+        'heading-xl': ['20px', { lineHeight: '1.15' }],
+        'heading-2xl': ['24px', { lineHeight: '1.1' }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,16 +64,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        forest: {
+          DEFAULT: "hsl(var(--forest))",
+          dark: "hsl(var(--forest-dark))",
         },
+        yellow: {
+          DEFAULT: "hsl(var(--yellow))",
+          hover: "hsl(var(--yellow-hover))",
+        },
+        dark: "hsl(var(--dark))",
+        "gray-light": "hsl(var(--gray-light))",
+        "gray-medium": "hsl(var(--gray-medium))",
+        "gray-text": "hsl(var(--gray-text))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,20 +84,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
