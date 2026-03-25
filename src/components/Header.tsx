@@ -42,7 +42,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between h-[58px] px-4 lg:px-8">
         {/* Logo */}
         <a href="#" className="flex-shrink-0">
-          <img src={logoHeader} alt="Skenujeme.sk" className="h-[29px] w-auto" />
+          <img src={logoHeader} alt="Skenujeme.sk" className="h-[36px] w-auto" />
         </a>
 
         {/* Desktop nav */}
@@ -51,10 +51,10 @@ const Header = () => {
             <a
               key={item.href}
               href={item.href}
-              className={`text-[9px] font-bold uppercase tracking-[0.2em] transition-colors ${
+              className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-colors ${
                 item.href === activeHref
                   ? "text-accent"
-                  : "text-primary-foreground/70 hover:text-primary-foreground"
+                  : "text-primary-foreground hover:text-primary-foreground/50"
               }`}
             >
               {item.label}
@@ -104,7 +104,7 @@ const Header = () => {
           {/* CTA Button */}
           <a
             href="#kontakt"
-            className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground text-[9px] font-bold uppercase tracking-[0.15em] px-5 py-2 rounded-[4px] hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground text-[11px] font-bold uppercase tracking-[0.15em] px-5 py-2 rounded-[4px] hover:bg-primary/90 transition-colors"
           >
             CENOVÁ PONUKA
             <img src={offerIcon} alt="" className="w-[18px] h-[18px]" />
