@@ -22,7 +22,7 @@ const IntroSection = () => {
               <br />
               <span className="text-accent">na problém.</span>
             </h2>
-            <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px]">
+            <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium">
               Pri stavebných projektoch, rekonštrukciách alebo modernizácii výrobných technológií je{" "}
               <span className="font-bold text-foreground">presnosť vstupných dát kľúčová.</span>
             </p>
