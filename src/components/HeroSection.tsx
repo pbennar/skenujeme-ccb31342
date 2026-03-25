@@ -27,7 +27,7 @@ const HeroSection = () => {
         </div>
 
         {/* Main heading - light intro, bold key phrases */}
-        <h1 className="max-w-[560px] mb-6 leading-[1.15]">
+        <h1 className="max-w-[720px] mb-6 leading-[1.15]">
           <span className="text-[28px] lg:text-[36px] font-light text-primary-foreground">
             Prenášame reálny svet do{" "}
           </span>
@@ -38,7 +38,7 @@ const HeroSection = () => {
         </h1>
 
         {/* Subtext - larger, bolder, white */}
-        <p className="text-[16px] lg:text-[18px] text-primary-foreground max-w-[480px] mb-10 font-normal leading-relaxed">
+        <p className="text-[16px] lg:text-[18px] text-primary-foreground max-w-[620px] mb-10 font-normal leading-relaxed">
           Zachytíme realitu presne, kompletne a v jednom kroku – ešte skôr, než vzniknú chyby, kolízie a dodatočné náklady.
         </p>
 
