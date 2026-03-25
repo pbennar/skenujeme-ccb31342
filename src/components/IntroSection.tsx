@@ -6,8 +6,8 @@ const IntroSection = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Label with horizontal line */}
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-[40px] h-[1px] bg-foreground" />
-          <p className="text-[9px] uppercase tracking-[0.5em] text-foreground font-semibold">
+          <div className="w-[40px] h-[1px] bg-primary" />
+          <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
             AKÝ JE PROBLÉM?
           </p>
         </div>
