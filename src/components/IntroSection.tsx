@@ -32,7 +32,7 @@ const IntroSection = () => {
           <div className="flex flex-col justify-center">
             <div className="mb-6">
               <p className="text-[18px] lg:text-[22px] font-bold text-foreground mb-3">Riešenie</p>
-              <p className="text-[14px] lg:text-[16px] text-gray-text leading-relaxed">
+              <p className="text-[14px] lg:text-[16px] text-gray-text leading-relaxed font-medium">
                 3D laserové skenovanie{" "}
                 <span className="font-bold text-foreground">zachytí skutočný stav objektu</span>{" "}
                 s presnosťou až do 1 mm a vytvorí kompletný digitálny obraz reality.
