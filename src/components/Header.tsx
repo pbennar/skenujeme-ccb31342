@@ -42,7 +42,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between h-[58px] px-4 lg:px-8">
         {/* Logo */}
         <a href="#" className="flex-shrink-0">
-          <img src={logoHeader} alt="Skenujeme.sk" className="h-[29px] w-auto" />
+          <img src={logoHeader} alt="Skenujeme.sk" className="h-[36px] w-auto" />
         </a>
 
         {/* Desktop nav */}
