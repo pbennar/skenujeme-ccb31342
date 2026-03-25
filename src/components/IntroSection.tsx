@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import arrowDown from "@/assets/arrow-down.svg";
 
 const IntroSection = () => {
   return (
