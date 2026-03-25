@@ -66,3 +66,9 @@
     line-height: 1.2;
   }
 }
+
+@layer utilities {
+  .group:hover .group-hover-float {
+    animation: bounce-gentle 1.5s ease-in-out infinite;
+  }
+}

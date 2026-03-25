@@ -46,7 +46,7 @@ const HeroSection = () => {
         {/* CTA Button */}
         <a
           href="#projekty"
-          className="inline-flex items-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors"
+          className="group inline-flex items-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors"
         >
           <div className="flex flex-col">
             <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">POZRIEŤ PROJEKTY</span>
@@ -54,7 +54,7 @@ const HeroSection = () => {
               kde sme využili 3D skenovanie
             </span>
           </div>
-          <img src={arrowDown} alt="" className="w-[20px] h-[20px]" />
+          <img src={arrowDown} alt="" className="w-[20px] h-[20px] group-hover-float" />
         </a>
       </div>
 
