@@ -20,7 +20,7 @@ const HeroSection = () => {
       <div className="container relative mx-auto px-4 lg:px-8 py-16 lg:py-24">
         {/* Horizontal white line + yellow subtitle */}
         <div className="flex items-center gap-4 mb-5">
-          <div className="w-[40px] h-[2px] bg-primary-foreground" />
+          <div className="w-[40px] h-[1px] bg-primary-foreground" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-accent font-semibold">
             VERNÁ REALITA V 3D BEZ DOHADOV
           </p>
