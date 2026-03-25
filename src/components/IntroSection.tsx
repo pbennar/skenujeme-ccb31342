@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import arrowDown from "@/assets/arrow-down.svg";
 
 const IntroSection = () => {
   return (
@@ -48,7 +48,7 @@ const IntroSection = () => {
                   3D skenovanie v praxi
                 </span>
               </div>
-              <ArrowRight className="w-[20px] h-[20px] text-primary-foreground" />
+              <img src={arrowDown} alt="" className="w-[20px] h-[20px] brightness-0 invert" />
             </a>
           </div>
         </div>
