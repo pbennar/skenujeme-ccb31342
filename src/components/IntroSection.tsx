@@ -6,8 +6,8 @@ const IntroSection = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Label with horizontal line */}
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-[40px] h-[1px] bg-foreground" />
-          <p className="text-[9px] uppercase tracking-[0.5em] text-foreground font-semibold">
+          <div className="w-[40px] h-[1px] bg-primary" />
+          <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
             AKÝ JE PROBLÉM?
           </p>
         </div>
@@ -31,8 +31,8 @@ const IntroSection = () => {
           {/* Right */}
           <div className="flex flex-col justify-center">
             <div className="mb-6">
-              <p className="text-[16px] lg:text-[18px] font-bold text-foreground mb-2">Riešenie</p>
-              <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed">
+              <p className="text-[18px] lg:text-[22px] font-bold text-foreground mb-3">Riešenie</p>
+              <p className="text-[14px] lg:text-[16px] text-gray-text leading-relaxed">
                 3D laserové skenovanie{" "}
                 <span className="font-bold text-foreground">zachytí skutočný stav objektu</span>{" "}
                 s presnosťou až do 1 mm a vytvorí kompletný digitálny obraz reality.
