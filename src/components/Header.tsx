@@ -104,7 +104,7 @@ const Header = () => {
           {/* CTA Button */}
           <a
             href="#kontakt"
-            className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground text-[9px] font-bold uppercase tracking-[0.15em] px-5 py-2 rounded-[4px] hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground text-[11px] font-bold uppercase tracking-[0.15em] px-5 py-2 rounded-[4px] hover:bg-primary/90 transition-colors"
           >
             CENOVÁ PONUKA
             <img src={offerIcon} alt="" className="w-[18px] h-[18px]" />
