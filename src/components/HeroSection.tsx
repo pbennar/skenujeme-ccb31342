@@ -29,10 +29,10 @@ const HeroSection = () => {
         {/* Main heading - light intro, bold key phrases */}
         <h1 className="max-w-[560px] mb-6 leading-[1.15]">
           <span className="text-[28px] lg:text-[36px] font-light text-primary-foreground">
-            Prenášame reálny svet do presného{" "}
+            Prenášame reálny svet do{" "}
           </span>
           <span className="text-[28px] lg:text-[36px] font-extrabold text-primary-foreground">
-            3D digitálneho priestoru
+            presného 3D digitálneho priestoru
           </span>
           <span className="text-[28px] lg:text-[36px] font-extrabold text-accent">.</span>
         </h1>
