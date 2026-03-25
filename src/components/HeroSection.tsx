@@ -38,7 +38,7 @@ const HeroSection = () => {
         </h1>
 
         {/* Subtext - larger, bolder, white */}
-        <p className="text-[16px] lg:text-[18px] text-primary-foreground max-w-[480px] mb-10 font-normal leading-relaxed">
+        <p className="text-[16px] lg:text-[18px] text-primary-foreground max-w-[620px] mb-10 font-normal leading-relaxed">
           Zachytíme realitu presne, kompletne a v jednom kroku – ešte skôr, než vzniknú chyby, kolízie a dodatočné náklady.
         </p>
 
