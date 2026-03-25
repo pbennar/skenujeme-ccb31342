@@ -51,10 +51,10 @@ const Header = () => {
             <a
               key={item.href}
               href={item.href}
-              className={`text-[9px] font-bold uppercase tracking-[0.2em] transition-colors ${
+              className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-colors ${
                 item.href === activeHref
                   ? "text-accent"
-                  : "text-primary-foreground/70 hover:text-primary-foreground"
+                  : "text-primary-foreground hover:text-primary-foreground/50"
               }`}
             >
               {item.label}
