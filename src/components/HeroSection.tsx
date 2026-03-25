@@ -28,7 +28,7 @@ const HeroSection = () => {
 
         {/* Main heading - light intro, bold key phrases */}
         <h1 className="max-w-[720px] mb-6 leading-[1.15]">
-          <span className="text-[28px] lg:text-[36px] font-light text-primary-foreground">
+          <span className="text-[28px] lg:text-[36px] font-normal text-primary-foreground">
             Prenášame reálny svet do
           </span>
           <br />
