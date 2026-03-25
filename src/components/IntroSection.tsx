@@ -48,7 +48,7 @@ const IntroSection = () => {
                   3D skenovanie v praxi
                 </span>
               </div>
-              <ArrowRight className="w-[20px] h-[20px] text-primary-foreground" />
+              <img src={arrowDown} alt="" className="w-[20px] h-[20px] invert brightness-0 filter" />
             </a>
           </div>
         </div>
