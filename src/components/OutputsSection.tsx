@@ -66,7 +66,7 @@ const OutputsSection = () => {
               {software.map((s) => (
                 <div
                   key={s.alt}
-                  className="bg-background rounded-lg border border-border shadow-sm p-4 flex items-center justify-center"
+                  className="bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-4 flex items-center justify-center"
                 >
                   <img src={s.logo} alt={s.alt} className="h-[28px] lg:h-[32px] object-contain" />
                 </div>
