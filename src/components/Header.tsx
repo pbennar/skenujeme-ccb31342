@@ -52,6 +52,7 @@ const Header = () => {
             <a
               key={item.href}
               href={item.href}
+              onClick={handleAnchorClick}
               className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-colors ${
                 item.href === activeHref
                   ? "text-accent"
