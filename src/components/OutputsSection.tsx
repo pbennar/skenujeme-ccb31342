@@ -83,7 +83,7 @@ const OutputsSection = () => {
               >
                 {/* Yellow rounded square icon */}
                 <div className="flex-shrink-0 w-11 h-11 rounded-lg bg-accent flex items-center justify-center">
-                  <img src={o.icon} alt="" className="w-5 h-5" />
+                  <img src={o.icon} alt="" className="w-7 h-7" />
                 </div>
                 <div>
                   <p className="text-[13px] font-extrabold text-foreground uppercase tracking-wide mb-0.5">
