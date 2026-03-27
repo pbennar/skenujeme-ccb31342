@@ -146,7 +146,7 @@ const ContactSection = () => {
                         radi vám pripravíme ponuku
                       </span>
                     </div>
-                    <img src={sendIcon} alt="" className="w-[20px] h-[20px]" />
+                    <img src={sendIcon} alt="" className="w-[20px] h-[20px] group-hover-float" />
                   </button>
                 </div>
               </>
