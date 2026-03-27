@@ -1,12 +1,10 @@
 import heroBg from "@/assets/hero-bg.svg";
 import arrowDown from "@/assets/arrow-down.svg";
+import { smoothScrollTo, handleAnchorClick } from "@/lib/smoothScroll";
 
 const HeroSection = () => {
   const handleScrollDown = () => {
-    const target = document.getElementById("skenovanie");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    smoothScrollTo("skenovanie");
   };
 
   return (
@@ -46,6 +44,7 @@ const HeroSection = () => {
         {/* CTA Button */}
         <a
           href="#projekty"
+          onClick={handleAnchorClick}
           className="group inline-flex items-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors"
         >
           <div className="flex flex-col">

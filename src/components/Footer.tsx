@@ -3,6 +3,7 @@ import arrowCircle from "@/assets/arrow-circle.svg";
 import mobilIcon from "@/assets/mobil-icon.svg";
 import emailIcon from "@/assets/email-icon.svg";
 import linkedinIcon from "@/assets/linkedin-icon.svg";
+import { handleAnchorClick } from "@/lib/smoothScroll";
 
 const Footer = () => {
   return (
@@ -32,19 +33,19 @@ const Footer = () => {
                 Navigácia
               </p>
               <nav className="flex flex-col gap-2">
-                <a href="#skenovanie" className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
+                <a href="#skenovanie" onClick={handleAnchorClick} className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   3D skenovanie
                 </a>
-                <a href="#proces" className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
+                <a href="#proces" onClick={handleAnchorClick} className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   Ako to funguje
                 </a>
-                <a href="#vystupy" className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
+                <a href="#vystupy" onClick={handleAnchorClick} className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   Výstupy
                 </a>
-                <a href="#projekty" className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
+                <a href="#projekty" onClick={handleAnchorClick} className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   Projekty
                 </a>
