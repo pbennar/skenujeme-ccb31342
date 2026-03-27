@@ -72,6 +72,7 @@ const ScanTypesSection = () => {
         <div className="flex flex-col items-center">
           <a
             href="#projekty"
+            onClick={handleAnchorClick}
             className="group inline-flex items-center gap-4 bg-primary text-primary-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary/90 transition-colors"
           >
             <div className="flex flex-col">
