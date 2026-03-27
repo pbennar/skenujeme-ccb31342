@@ -10,7 +10,7 @@ const outputs = [
   {
     icon: ikona360,
     title: "360° fotografie a vizualizácie",
-    desc: "",
+    desc: "presne naskenovaného objektu",
   },
   {
     icon: ikonaMracno,
@@ -66,9 +66,9 @@ const OutputsSection = () => {
               {software.map((s) => (
                 <div
                   key={s.alt}
-                  className="bg-background rounded-lg border border-border shadow-sm p-4 flex items-center justify-center"
+                  className="bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-4 flex items-center justify-center"
                 >
-                  <img src={s.logo} alt={s.alt} className="h-[28px] lg:h-[32px] object-contain" />
+                  <img src={s.logo} alt={s.alt} className={`${s.alt === 'Revit' ? 'h-[36px] lg:h-[42px]' : 'h-[28px] lg:h-[32px]'} object-contain`} />
                 </div>
               ))}
             </div>
@@ -79,7 +79,7 @@ const OutputsSection = () => {
             {outputs.map((o, i) => (
               <div
                 key={i}
-                className="bg-background rounded-lg border border-border shadow-sm p-5 flex items-center gap-4"
+                className="bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-5 flex items-center gap-4 transition-transform duration-300 ease-out hover:scale-105 cursor-default"
               >
                 {/* Yellow rounded square icon */}
                 <div className="flex-shrink-0 w-11 h-11 rounded-lg bg-accent flex items-center justify-center">
