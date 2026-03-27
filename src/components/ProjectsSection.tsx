@@ -82,11 +82,11 @@ const ProjectsSection = () => {
               </button>
 
               <div className="text-center flex-1 px-4">
-                <p className="text-[12px] lg:text-[14px] font-extrabold uppercase tracking-wider text-primary-foreground mb-0.5" key={emblaApi?.selectedScrollSnap()}>
-                  {projects[emblaApi?.selectedScrollSnap() ?? 0]?.title}
+                <p className="text-[12px] lg:text-[14px] font-extrabold uppercase tracking-wider text-primary-foreground mb-0.5">
+                  {projects[selectedIndex]?.title}
                 </p>
                 <p className="text-[13px] lg:text-[15px] text-primary-foreground/70 font-medium">
-                  {projects[emblaApi?.selectedScrollSnap() ?? 0]?.desc}
+                  {projects[selectedIndex]?.desc}
                 </p>
               </div>
 
