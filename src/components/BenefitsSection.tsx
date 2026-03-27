@@ -29,9 +29,7 @@ const BenefitsSection = () => {
               <span className="text-foreground">Moderná technológia,</span>
               <br />
               <span className="text-foreground">ktorá dokáže </span>
-              <span className="text-accent">presne zachytiť</span>
-              <br />
-              <span className="text-accent">existujúci stav.</span>
+              <span className="text-accent">presne zachytiť existujúci stav.</span>
             </h2>
             <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium">
               Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje{" "}
