@@ -1,22 +1,18 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const tags = [
-  "ZAMERANIE STAVU",
-  "VÝŠKOPIS A POLOHOPIS",
-  "VADY A NEDOROBKY",
-  "POREALIZAČNÉ ZAMERANIE",
-  "FORÉNZE STAVY",
-  "POSÚDENIE TERÉNU",
-];
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations, t } from "@/i18n/translations";
 
 const UsagesSection = () => {
   const sectionRef = useScrollReveal<HTMLElement>();
+  const { lang } = useLanguage();
+  const u = translations.usages;
+  const tags = u.tags[lang];
 
   return (
     <section className="bg-background py-14 lg:py-20 border-t border-border" ref={sectionRef}>
       <div className="container mx-auto px-4 lg:px-8 text-center">
         <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground leading-tight mb-8" data-reveal>
-          Veľa možností využitia<span className="text-accent">.</span>
+          {t(u.heading, lang)}<span className="text-accent">.</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mx-auto">

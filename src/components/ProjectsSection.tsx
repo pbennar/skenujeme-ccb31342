@@ -3,31 +3,20 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations, t } from "@/i18n/translations";
 
 import referencia1 from "@/assets/referencia-1.png";
 import referencia2 from "@/assets/referencia-2.png";
 import referencia3 from "@/assets/referencia-3.png";
 
-const projects = [
-  {
-    image: referencia1,
-    title: "ŠPORTOVÁ HALA MALACKY",
-    desc: "3D skenovanie objektu pre kontrolu realizácie a analýzu plôch",
-  },
-  {
-    image: referencia2,
-    title: "METRANS PARKOVISKO",
-    desc: "Skenovanie na kontrolu spádovanej plochy 0.5% na 4.7 Ha",
-  },
-  {
-    image: referencia3,
-    title: "BUDOVA FAURECIA",
-    desc: "Zameranie reality 2D pôdorysov a rezov",
-  },
-];
+const images = [referencia1, referencia2, referencia3];
 
 const ProjectsSection = () => {
   const sectionRef = useScrollReveal<HTMLElement>();
+  const { lang } = useLanguage();
+  const p = translations.projects;
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 50 }, [
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   ]);
@@ -43,9 +32,7 @@ const ProjectsSection = () => {
     onSelect();
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
+    return () => { emblaApi.off("select", onSelect); };
   }, [emblaApi, onSelect]);
 
   return (
@@ -54,17 +41,17 @@ const ProjectsSection = () => {
         <div className="flex items-center gap-4 mb-8" data-reveal="left">
           <div className="w-[40px] h-[1px] bg-primary" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-            REFERENČNÉ PROJEKTY
+            {t(p.label, lang)}
           </p>
         </div>
 
         <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center" data-reveal data-reveal-delay="1">
-          <span className="text-foreground">Pozrite si naše projekty</span>
+          <span className="text-foreground">{t(p.heading, lang)}</span>
           <span className="text-accent">.</span>
         </h2>
 
         <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] mb-12 font-medium text-center mx-auto" data-reveal data-reveal-delay="2">
-          Pomohli sme architektom, projektantom a stavebným firmám pracovať s presnými dátami a eliminovať chyby pri stavbách.
+          {t(p.subtext, lang)}
         </p>
       </div>
 
@@ -81,10 +68,10 @@ const ProjectsSection = () => {
 
               <div className="text-center flex-1 px-2 min-h-[56px] flex flex-col justify-center">
                 <p className="text-[11px] lg:text-[14px] font-extrabold uppercase tracking-wider text-primary-foreground mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
-                  {projects[selectedIndex]?.title}
+                  {t(p.items[selectedIndex].title, lang)}
                 </p>
                 <p className="text-[11px] lg:text-[15px] text-primary-foreground/70 font-medium line-clamp-2">
-                  {projects[selectedIndex]?.desc}
+                  {t(p.items[selectedIndex].desc, lang)}
                 </p>
               </div>
 
@@ -98,14 +85,9 @@ const ProjectsSection = () => {
 
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
-                {projects.map((p, i) => (
+                {p.items.map((item, i) => (
                   <div key={i} className="min-w-0 shrink-0 grow-0 basis-full">
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      loading="lazy"
-                      className="w-full h-[280px] lg:h-[460px] object-cover"
-                    />
+                    <img src={images[i]} alt={t(item.title, lang)} loading="lazy" className="w-full h-[280px] lg:h-[460px] object-cover" />
                   </div>
                 ))}
               </div>

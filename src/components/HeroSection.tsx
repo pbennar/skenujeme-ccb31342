@@ -1,70 +1,69 @@
 import heroBg from "@/assets/hero-bg.png";
 import arrowDown from "@/assets/arrow-down.svg";
 import { smoothScrollTo, handleAnchorClick } from "@/lib/smoothScroll";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations, t } from "@/i18n/translations";
 
 const HeroSection = () => {
+  const { lang } = useLanguage();
+  const h = translations.hero;
+
   const handleScrollDown = () => {
     smoothScrollTo("skenovanie");
   };
 
   return (
     <section className="relative min-h-[520px] lg:min-h-[600px] flex items-center pt-[58px]">
-      {/* Background */}
       <div className="absolute inset-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-forest-dark/70" />
       </div>
 
       <div className="container relative mx-auto px-4 lg:px-8 py-16 lg:py-24">
-        {/* Horizontal white line + yellow subtitle */}
         <div className="flex items-center gap-4 mb-5">
           <div className="w-[40px] h-[1px] bg-primary-foreground" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-accent font-semibold">
-            VERNÁ REALITA V 3D BEZ DOHADOV
+            {t(h.subtitle, lang)}
           </p>
         </div>
 
-        {/* Main heading - light intro, bold key phrases */}
         <h1 className="max-w-[720px] mb-6 leading-[1.15]">
           <span className="text-[28px] lg:text-[36px] font-normal text-primary-foreground">
-            Prenášame reálny svet
+            {t(h.heading1, lang)}
           </span>
           <br />
           <span className="text-[28px] lg:text-[36px] font-normal text-primary-foreground">
-            do{" "}
+            {t(h.heading2, lang)}
           </span>
           <span className="text-[28px] lg:text-[36px] font-extrabold text-primary-foreground">
-            presného 3D
+            {t(h.heading3, lang)}
           </span>
           <br />
           <span className="text-[28px] lg:text-[36px] font-extrabold text-primary-foreground">
-            digitálneho priestoru
+            {t(h.heading4, lang)}
           </span>
           <span className="text-[28px] lg:text-[36px] font-extrabold text-accent">.</span>
         </h1>
 
-        {/* Subtext - larger, bolder, white */}
         <p className="text-[16px] lg:text-[18px] text-primary-foreground max-w-[620px] mb-10 font-normal leading-relaxed">
-          Zachytíme realitu presne, kompletne a v jednom kroku – ešte skôr, než vzniknú chyby, kolízie a dodatočné náklady.
+          {t(h.subtext, lang)}
         </p>
 
-        {/* CTA Button */}
         <a
           href="#projekty"
           onClick={handleAnchorClick}
           className="group inline-flex items-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors"
         >
           <div className="flex flex-col">
-            <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">POZRIEŤ PROJEKTY</span>
+            <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">{t(h.ctaMain, lang)}</span>
             <span className="font-semibold text-[10px] tracking-[0.08em] text-dark/80 -mt-0.5">
-              kde sme využili 3D skenovanie
+              {t(h.ctaSub, lang)}
             </span>
           </div>
           <img src={arrowDown} alt="" className="w-[20px] h-[20px] group-hover-float" />
         </a>
       </div>
 
-      {/* Scroll-down indicator */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-10">
         <button
           onClick={handleScrollDown}

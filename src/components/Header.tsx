@@ -5,13 +5,15 @@ import flagUk from "@/assets/flag-uk.svg";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { handleAnchorClick } from "@/lib/smoothScroll";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations, t } from "@/i18n/translations";
 
 const navItems = [
-  { label: "3D SKENOVANIE", href: "#skenovanie" },
-  { label: "AKO TO FUNGUJE", href: "#proces" },
-  { label: "VÝSTUPY", href: "#vystupy" },
-  { label: "PROJEKTY", href: "#projekty" },
-  { label: "KONTAKT", href: "#kontakt" },
+  { labelKey: "skenovanie" as const, href: "#skenovanie" },
+  { labelKey: "proces" as const, href: "#proces" },
+  { labelKey: "vystupy" as const, href: "#vystupy" },
+  { labelKey: "projekty" as const, href: "#projekty" },
+  { labelKey: "kontakt" as const, href: "#kontakt" },
 ];
 
 const languages = [
@@ -21,12 +23,12 @@ const languages = [
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState<"sk" | "en">("sk");
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
   const activeHref = "#skenovanie";
+  const { lang, setLang } = useLanguage();
 
-  const activeFlag = languages.find((l) => l.code === activeLang)!;
+  const activeFlag = languages.find((l) => l.code === lang)!;
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -59,7 +61,7 @@ const Header = () => {
                   : "text-primary-foreground hover:text-primary-foreground/50"
               }`}
             >
-              {item.label}
+              {t(translations.nav[item.labelKey], lang)}
             </a>
           ))}
         </nav>
@@ -80,23 +82,23 @@ const Header = () => {
 
             {langOpen && (
               <div className="absolute top-full right-0 mt-2 bg-dark border border-primary-foreground/10 rounded-md shadow-lg overflow-hidden min-w-[140px]">
-                {languages.map((lang) => (
+                {languages.map((l) => (
                   <button
-                    key={lang.code}
+                    key={l.code}
                     onClick={() => {
-                      setActiveLang(lang.code);
+                      setLang(l.code);
                       setLangOpen(false);
                     }}
                     className={`flex items-center gap-2.5 w-full px-3 py-2 text-[9px] font-bold uppercase tracking-wider transition-colors ${
-                      activeLang === lang.code
+                      lang === l.code
                         ? "text-accent bg-primary-foreground/5"
                         : "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/5"
                     }`}
                   >
                     <span className="rounded-full overflow-hidden w-[18px] h-[18px] flex-shrink-0">
-                      <img src={lang.flag} alt={lang.label} className="w-full h-full object-cover" />
+                      <img src={l.flag} alt={l.label} className="w-full h-full object-cover" />
                     </span>
-                    {lang.label}
+                    {l.label}
                   </button>
                 ))}
               </div>
@@ -109,7 +111,7 @@ const Header = () => {
             onClick={handleAnchorClick}
             className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground text-[11px] font-bold uppercase tracking-[0.15em] px-5 py-2 rounded-[4px] hover:bg-primary/90 transition-colors"
           >
-            CENOVÁ PONUKA
+            {t(translations.nav.cta, lang)}
             <img src={offerIcon} alt="" className="w-[18px] h-[18px]" />
           </a>
         </div>
@@ -138,24 +140,24 @@ const Header = () => {
                 }`}
                 onClick={(e) => { handleAnchorClick(e); setMobileOpen(false); }}
               >
-                {item.label}
+                {t(translations.nav[item.labelKey], lang)}
               </a>
             ))}
 
             {/* Mobile language switcher */}
             <div className="flex flex-col gap-2 pt-2">
-              {languages.map((lang) => (
+              {languages.map((l) => (
                 <button
-                  key={lang.code}
-                  onClick={() => setActiveLang(lang.code)}
+                  key={l.code}
+                  onClick={() => setLang(l.code)}
                   className={`flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider ${
-                    activeLang === lang.code ? "text-accent" : "text-primary-foreground/70"
+                    lang === l.code ? "text-accent" : "text-primary-foreground/70"
                   }`}
                 >
                   <span className="rounded-full overflow-hidden w-[20px] h-[20px]">
-                    <img src={lang.flag} alt={lang.label} className="w-full h-full object-cover" />
+                    <img src={l.flag} alt={l.label} className="w-full h-full object-cover" />
                   </span>
-                  {lang.label}
+                  {l.label}
                 </button>
               ))}
             </div>
@@ -165,7 +167,7 @@ const Header = () => {
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-[11px] font-bold uppercase tracking-wider px-5 py-2.5 rounded-[4px] w-fit"
               onClick={(e) => { handleAnchorClick(e); setMobileOpen(false); }}
             >
-              CENOVÁ PONUKA
+              {t(translations.nav.cta, lang)}
               <img src={offerIcon} alt="" className="w-[18px] h-[18px]" />
             </a>
           </nav>
