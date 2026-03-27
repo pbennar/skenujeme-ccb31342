@@ -31,10 +31,11 @@ const BenefitsSection = () => {
               <span className="text-foreground">ktorá dokáže </span>
               <span className="text-accent">presne zachytiť</span>
               <br />
-              <span className="text-foreground">existujúci stav.</span>
+              <span className="text-accent">existujúci stav.</span>
             </h2>
             <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium">
-              Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje presnú digitálnu repliku reality.
+              Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje{" "}
+              <span className="font-bold text-foreground">presnú digitálnu repliku reality.</span>
             </p>
           </div>
 
@@ -54,11 +55,11 @@ const BenefitsSection = () => {
           {benefits.map((b) => (
             <div
               key={b.title}
-              className="bg-background rounded-lg border border-border shadow-sm p-5 flex items-start gap-3"
+              className="group/card bg-background rounded-lg border border-border shadow-sm p-5 flex items-start gap-3"
             >
               {/* Check icon with pulsing ring */}
-              <div className="relative flex-shrink-0 w-9 h-9 flex items-center justify-center group/check">
-                <span className="absolute inset-0 rounded-full bg-primary/20 group-hover/check:animate-pulse-ring" />
+              <div className="relative flex-shrink-0 w-11 h-11 flex items-center justify-center">
+                <span className="absolute inset-0 rounded-full bg-primary/20 group-hover/card:animate-[pulse-ring_1.5s_ease-in-out_infinite]" />
                 <span className="relative w-7 h-7 rounded-full bg-primary flex items-center justify-center">
                   <Check className="w-3.5 h-3.5 text-primary-foreground" />
                 </span>
