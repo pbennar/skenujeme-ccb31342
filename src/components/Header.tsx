@@ -4,6 +4,7 @@ import flagSk from "@/assets/flag-sk.svg";
 import flagUk from "@/assets/flag-uk.svg";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { handleAnchorClick } from "@/lib/smoothScroll";
 
 const navItems = [
   { label: "3D SKENOVANIE", href: "#skenovanie" },
