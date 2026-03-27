@@ -62,7 +62,7 @@ const OutputsSection = () => {
             </p>
 
             {/* Software logos */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-stretch gap-4">
               {software.map((s) => (
                 <div
                   key={s.alt}
