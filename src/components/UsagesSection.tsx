@@ -15,7 +15,7 @@ const UsagesSection = () => {
           Veľa možností využitia<span className="text-accent">.</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[720px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mx-auto">
           {tags.map((tag) => (
             <div
               key={tag}
