@@ -60,12 +60,12 @@ const ProjectsSection = () => {
           </p>
         </div>
 
-        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
+        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center">
           <span className="text-foreground">Pozrite si naše projekty</span>
           <span className="text-accent">.</span>
         </h2>
 
-        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] mb-12 font-medium">
+        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] mb-12 font-medium text-center mx-auto">
           Pomohli sme architektom, projektantom a stavebným firmám pracovať s presnými dátami a eliminovať chyby pri stavbách.
         </p>
       </div>
