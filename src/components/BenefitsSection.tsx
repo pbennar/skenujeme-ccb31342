@@ -1,61 +1,47 @@
 import scanRender from "@/assets/scan-render.png";
 import { Check } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const benefits = [
-  { title: "Presnosť", desc: "až do 1 mm bez odhadov" },
-  { title: "Rýchlosť", desc: "zameranie v jednom kroku" },
-  { title: "Efektivita", desc: "menej chýb a menej prestojov" },
-  { title: "Komplexnosť dát", desc: "všetko v jednom modeli" },
-  { title: "Spolupráca tímov", desc: "rovnaké dáta pre všetky tímy" },
-  { title: "Špičkové prístroje", desc: "prístroje s najnovšími 3D lasermi" },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
+import { translations, t } from "@/i18n/translations";
 
 const BenefitsSection = () => {
   const sectionRef = useScrollReveal<HTMLElement>();
+  const { lang } = useLanguage();
+  const b = translations.benefits;
 
   return (
     <section className="bg-gray-light py-14 lg:py-20" ref={sectionRef}>
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Label */}
         <div className="flex items-center gap-4 mb-8" data-reveal="left">
           <div className="w-[40px] h-[1px] bg-primary" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-            HLAVNÉ VÝHODY
+            {t(b.label, lang)}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-12">
-          {/* Left */}
           <div>
             <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5" data-reveal data-reveal-delay="1">
-              <span className="text-foreground">Moderná technológia,</span>
+              <span className="text-foreground">{t(b.heading1, lang)}</span>
               <br />
-              <span className="text-foreground">ktorá dokáže </span>
-              <span className="text-accent">presne zachytiť existujúci stav.</span>
+              <span className="text-foreground">{t(b.heading2, lang)}</span>
+              <span className="text-accent">{t(b.heading3, lang)}</span>
             </h2>
             <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium" data-reveal data-reveal-delay="2">
-              Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje{" "}
-              <span className="font-bold text-foreground">presnú digitálnu repliku reality.</span>
+              {t(b.text, lang)}{" "}
+              <span className="font-bold text-foreground">{t(b.textBold, lang)}</span>
             </p>
           </div>
 
-          {/* Right - floating image */}
           <div className="flex items-center justify-center" data-reveal="right" data-reveal-delay="2">
-            <img
-              src={scanRender}
-              alt="3D sken technológia"
-              loading="lazy"
-              className="w-full max-w-[460px] rounded-lg animate-float"
-            />
+            <img src={scanRender} alt="3D scan technology" loading="lazy" className="w-full max-w-[460px] rounded-lg animate-float" />
           </div>
         </div>
 
-        {/* 6 benefit cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {benefits.map((b, i) => (
+          {b.items.map((item, i) => (
             <div
-              key={b.title}
+              key={i}
               className="group/card bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-5 flex items-start gap-3"
               data-reveal
               data-reveal-delay={String(i + 3)}
@@ -67,8 +53,8 @@ const BenefitsSection = () => {
                 </span>
               </div>
               <div>
-                <p className="text-[13px] font-extrabold text-foreground uppercase tracking-wide mb-0.5">{b.title}</p>
-                <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed font-medium">{b.desc}</p>
+                <p className="text-[13px] font-extrabold text-foreground uppercase tracking-wide mb-0.5">{t(item.title, lang)}</p>
+                <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed font-medium">{t(item.desc, lang)}</p>
               </div>
             </div>
           ))}
