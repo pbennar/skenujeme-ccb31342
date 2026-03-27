@@ -87,11 +87,21 @@ const OutputsSection = () => {
                 </div>
                 <div>
                   <p className="text-[13px] font-extrabold text-foreground uppercase tracking-wide mb-0.5">
-                    {o.title}
+                    {o.title.split('|').map((part, j, arr) => (
+                      <span key={j}>
+                        {part}
+                        {j < arr.length - 1 && <span className="text-accent">|</span>}
+                      </span>
+                    ))}
                   </p>
                   {o.desc && (
                     <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed font-medium">
-                      {o.desc}
+                      {o.desc.split('|').map((part, j, arr) => (
+                        <span key={j}>
+                          {part}
+                          {j < arr.length - 1 && <span className="text-accent">|</span>}
+                        </span>
+                      ))}
                     </p>
                   )}
                 </div>
