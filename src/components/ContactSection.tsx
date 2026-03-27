@@ -39,7 +39,7 @@ const ContactSection = () => {
     `w-full border ${errors[field] ? 'border-destructive' : 'border-border'} rounded-md px-3 py-2.5 text-body-lg text-foreground placeholder:text-gray-text bg-background focus:outline-none focus:ring-1 focus:ring-primary`;
 
   return (
-    <section id="kontakt" className="relative py-14 lg:py-20">
+    <section className="relative py-14 lg:py-20">
       {/* Background */}
       <div className="absolute inset-0">
         <img src={ctaBg} alt="" className="w-full h-full object-cover" />
