@@ -51,13 +51,13 @@ const ProcessSection = () => {
         </div>
 
         {/* Heading - same size as "Vidieť realitu..." */}
-        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
+        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center">
           <span className="text-foreground">Proces 3D skenovania</span>
           <span className="text-accent">.</span>
         </h2>
 
         {/* Subtitle - same style as "Pri stavebných projektoch..." */}
-        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[560px] mb-12 font-medium">
+        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[560px] mb-12 font-medium text-center mx-auto">
           Výsledkom je kompletný digitálny obraz reality – nie výsek alebo odhad, ale presný model existujúceho stavu.
         </p>
 
