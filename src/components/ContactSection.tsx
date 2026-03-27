@@ -1,5 +1,5 @@
 import ctaBg from "@/assets/cta-bg.png";
-import talkIcon from "@/assets/talk-icon.svg";
+import sendIcon from "@/assets/send-icon.svg";
 import { useState } from "react";
 
 const ContactSection = () => {
@@ -67,13 +67,13 @@ const ContactSection = () => {
             <p className="text-[13px] lg:text-[15px] text-primary-foreground/70 leading-relaxed max-w-[420px] font-medium mb-4">
               Radi sa s vami stretneme na konzultácii a pripravíme nezáväznú cenovú ponuku.
             </p>
-            <p className="text-[13px] lg:text-[15px] text-primary-foreground/50 font-medium">
-              Stačí sa nám len ozvať ↓
+            <p className="text-[13px] lg:text-[15px] text-primary-foreground font-extrabold">
+              Stačí sa nám len ozvať
             </p>
           </div>
 
           {/* Right - Form */}
-          <div className="bg-background rounded-lg p-6 shadow-lg">
+          <div className="bg-background rounded-lg p-6 shadow-lg max-w-[380px] lg:ml-auto">
             {submitted ? (
               <div className="text-center py-10">
                 <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -86,9 +86,12 @@ const ContactSection = () => {
               </div>
             ) : (
               <>
-                <h3 className="text-heading-md font-bold text-foreground mb-5">
+                <h3 className="text-heading-md font-bold text-foreground mb-1">
                   Potrebujem 3D skenovanie
                 </h3>
+                <p className="text-body text-gray-text font-medium mb-4">
+                  Čoskoro sa Vám ozveme
+                </p>
                 <div className="flex flex-col gap-3">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input
@@ -139,8 +142,11 @@ const ContactSection = () => {
                       <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">
                         {sending ? "ODOSIELAM..." : "ODOSLAŤ SPRÁVU"}
                       </span>
+                      <span className="font-semibold text-[10px] tracking-[0.08em] text-dark/80 -mt-0.5">
+                        radi vám pripravíme ponuku
+                      </span>
                     </div>
-                    <img src={talkIcon} alt="" className="w-[20px] h-[20px]" />
+                    <img src={sendIcon} alt="" className="w-[20px] h-[20px]" />
                   </button>
                 </div>
               </>
