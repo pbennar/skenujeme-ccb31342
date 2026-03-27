@@ -54,8 +54,8 @@ const ScanTypesSection = () => {
               </div>
 
               {/* Bold label with yellow pipes */}
-              <div className="p-4 pt-3">
-                <p className="text-[10px] lg:text-[12px] font-extrabold uppercase tracking-wider text-foreground leading-snug">
+              <div className="p-4 pt-3 text-center">
+                <p className="text-[12px] lg:text-[14px] font-extrabold uppercase tracking-wider text-foreground leading-snug">
                   {card.parts.map((part, j) => (
                     <span key={j}>
                       {j > 0 && <span className="text-accent"> | </span>}
