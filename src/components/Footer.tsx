@@ -13,12 +13,14 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {/* Col 1 - Logo & about */}
             <div>
-              <img src={logoHeader} alt="Skenujeme.sk" className="h-[36px] w-auto mb-4" />
+              <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                <img src={logoHeader} alt="Skenujeme.sk" className="h-[47px] w-auto mb-4" />
+              </a>
               <p className="text-[13px] leading-[1.7] text-primary-foreground max-w-[280px] font-medium mb-3">
                 <span className="font-bold text-accent">Špecialisti na 3D laserové skenovanie.</span>{" "}
                 Našim cieľom je preniesť realitu do digitálneho priestoru tak, aby na nej bolo možné bezpečne navrhovať, plánovať a stavať.
               </p>
-              <a href="#" className="inline-flex items-center gap-2 text-accent text-[13px] font-medium hover:underline">
+              <a href="/Skenujeme-prezentacia.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-accent text-[13px] font-medium hover:underline">
                 <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                 Pozrieť si firemnú prezentáciu
               </a>
@@ -53,7 +55,7 @@ const Footer = () => {
                 <span className="text-[11px] text-primary-foreground font-bold uppercase tracking-[0.1em]">
                   Nájdete nás aj na
                 </span>
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/company/aquabt-s-r-o/" target="_blank" rel="noopener noreferrer">
                   <img src={linkedinIcon} alt="LinkedIn" className="w-[17px] h-[19px]" />
                 </a>
               </div>
@@ -88,9 +90,16 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 pt-4">
-          <p className="text-[11px] text-primary-foreground/30 text-center font-medium">
+        <div className="border-t border-primary-foreground/10 pt-4 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+          <p className="text-[11px] text-primary-foreground/30 font-medium">
             Copyright © 2026. All right reserved.
+          </p>
+          <span className="text-[11px] text-primary-foreground/30 font-medium hidden sm:inline">|</span>
+          <p className="text-[11px] text-primary-foreground/30 font-medium">
+            Túto stránku nám nadizajnovali{" "}
+            <a href="https://pekneprezky.sk/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              PeknéPrezky
+            </a>
           </p>
         </div>
       </div>
