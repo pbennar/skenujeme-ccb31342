@@ -3,6 +3,7 @@ import arrowCircle from "@/assets/arrow-circle.svg";
 import mobilIcon from "@/assets/mobil-icon.svg";
 import emailIcon from "@/assets/email-icon.svg";
 import linkedinIcon from "@/assets/linkedin-icon.svg";
+import { handleAnchorClick } from "@/lib/smoothScroll";
 
 const Footer = () => {
   return (
