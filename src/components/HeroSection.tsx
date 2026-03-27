@@ -1,4 +1,4 @@
-import heroBg from "@/assets/hero-bg.svg";
+import heroBg from "@/assets/hero-bg.png";
 import arrowDown from "@/assets/arrow-down.svg";
 import { smoothScrollTo, handleAnchorClick } from "@/lib/smoothScroll";
 
