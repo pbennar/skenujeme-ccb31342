@@ -26,7 +26,7 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 50 }, [
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
