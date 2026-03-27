@@ -12,8 +12,8 @@ const ProcessSection = () => {
   const steps = p.steps.map((step, idx) => ({
     num: String(idx + 1),
     title: t(step.title, lang),
-    items: step.items[lang],
-    bullets: step.bullets ? step.bullets[lang] : undefined,
+    items: [...step.items[lang]],
+    bullets: 'bullets' in step ? [...step.bullets![lang]] : undefined,
   }));
 
   return (
