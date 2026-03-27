@@ -68,8 +68,8 @@ const ProjectsSection = () => {
         </p>
       </div>
 
-      {/* Carousel with gray background */}
-      <div className="bg-gray-light py-10">
+      {/* Carousel */}
+      <div className="container mx-auto px-4 lg:px-8">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="relative">
             {/* Black bar with title, description and arrows on top */}
