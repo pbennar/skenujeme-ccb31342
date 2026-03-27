@@ -68,7 +68,7 @@ const OutputsSection = () => {
                   key={s.alt}
                   className="bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-4 flex items-center justify-center"
                 >
-                  <img src={s.logo} alt={s.alt} className="h-[28px] lg:h-[32px] object-contain" />
+                  <img src={s.logo} alt={s.alt} className={`${s.alt === 'Revit' ? 'h-[36px] lg:h-[42px]' : 'h-[28px] lg:h-[32px]'} object-contain`} />
                 </div>
               ))}
             </div>

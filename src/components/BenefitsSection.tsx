@@ -53,7 +53,7 @@ const BenefitsSection = () => {
           {benefits.map((b) => (
             <div
               key={b.title}
-              className="group/card bg-background rounded-lg border border-border shadow-sm p-5 flex items-start gap-3"
+              className="group/card bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-5 flex items-start gap-3"
             >
               {/* Check icon with pulsing ring */}
               <div className="relative flex-shrink-0 w-11 h-11 flex items-center justify-center">
