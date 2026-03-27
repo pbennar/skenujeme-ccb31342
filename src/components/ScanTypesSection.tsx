@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import arrowDown from "@/assets/arrow-down.svg";
+import { handleAnchorClick } from "@/lib/smoothScroll";
 import cardBuilding from "@/assets/card-building.png";
 import cardHalls from "@/assets/card-halls.png";
 import cardMonument from "@/assets/card-monument.png";
