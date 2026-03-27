@@ -73,7 +73,7 @@ const ProjectsSection = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="relative">
             {/* Black bar with title, description and arrows on top */}
-            <div className="bg-primary rounded-t-xl px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div className="bg-primary px-6 lg:px-8 py-4 flex items-center justify-between">
               <button
                 onClick={() => emblaApi?.scrollPrev()}
                 className="flex-shrink-0 w-9 h-9 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
