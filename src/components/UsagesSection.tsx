@@ -1,3 +1,5 @@
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 const tags = [
   "ZAMERANIE STAVU",
   "VÝŠKOPIS A POLOHOPIS",
@@ -8,18 +10,22 @@ const tags = [
 ];
 
 const UsagesSection = () => {
+  const sectionRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="bg-background py-14 lg:py-20 border-t border-border">
+    <section className="bg-background py-14 lg:py-20 border-t border-border" ref={sectionRef}>
       <div className="container mx-auto px-4 lg:px-8 text-center">
-        <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground leading-tight mb-8">
+        <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground leading-tight mb-8" data-reveal>
           Veľa možností využitia<span className="text-accent">.</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mx-auto">
-          {tags.map((tag) => (
+          {tags.map((tag, i) => (
             <div
               key={tag}
               className="usage-card relative bg-muted border border-border rounded-lg px-5 py-4 cursor-default overflow-hidden"
+              data-reveal
+              data-reveal-delay={String(i + 1)}
             >
               <span className="text-[11px] lg:text-[13px] font-normal uppercase tracking-[0.28em] text-foreground">
                 {tag}

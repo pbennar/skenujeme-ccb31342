@@ -1,12 +1,15 @@
 import arrowDown from "@/assets/arrow-down.svg";
 import { handleAnchorClick } from "@/lib/smoothScroll";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const IntroSection = () => {
+  const sectionRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section id="skenovanie" className="bg-gray-light py-14 lg:py-20">
+    <section id="skenovanie" className="bg-gray-light py-14 lg:py-20" ref={sectionRef}>
       <div className="container mx-auto px-4 lg:px-8">
         {/* Label with horizontal line */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-4 mb-8" data-reveal="left">
           <div className="w-[40px] h-[1px] bg-primary" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
             AKÝ JE PROBLÉM?
@@ -16,21 +19,21 @@ const IntroSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Left */}
           <div>
-            <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
+            <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5" data-reveal data-reveal-delay="1">
               <span className="text-foreground">Vidieť realitu</span>
               <br />
               <span className="text-foreground">skôr než sa zmení</span>
               <br />
               <span className="text-accent">na problém.</span>
             </h2>
-            <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium">
+            <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium" data-reveal data-reveal-delay="2">
               Pri stavebných projektoch, rekonštrukciách alebo modernizácii výrobných technológií je{" "}
               <span className="font-bold text-foreground">presnosť vstupných dát kľúčová.</span>
             </p>
           </div>
 
           {/* Right */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center" data-reveal="right" data-reveal-delay="2">
             <div className="mb-6">
               <p className="text-[18px] lg:text-[22px] font-bold text-foreground mb-3">Riešenie</p>
               <p className="text-[14px] lg:text-[16px] text-gray-text leading-relaxed font-medium">
