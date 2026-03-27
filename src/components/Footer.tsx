@@ -7,7 +7,7 @@ import { handleAnchorClick } from "@/lib/smoothScroll";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark py-10">
+    <footer id="kontakt" className="bg-dark py-10">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 mb-8">
           {/* Left side */}
