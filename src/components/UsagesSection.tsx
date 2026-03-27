@@ -11,7 +11,7 @@ const UsagesSection = () => {
   return (
     <section className="bg-background py-14 lg:py-20 border-t border-border">
       <div className="container mx-auto px-4 lg:px-8 text-center">
-        <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground leading-tight mb-4">
+        <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground leading-tight mb-8">
           Veľa možností využitia<span className="text-accent">.</span>
         </h2>
 
@@ -19,18 +19,12 @@ const UsagesSection = () => {
           {tags.map((tag) => (
             <div
               key={tag}
-              className="group relative bg-background border border-border rounded-lg px-5 py-4 cursor-default overflow-hidden"
+              className="usage-card relative bg-background border border-border rounded-lg px-5 py-4 cursor-default overflow-hidden"
             >
               <span className="text-[11px] lg:text-[13px] font-semibold uppercase tracking-[0.18em] text-foreground">
                 {tag}
               </span>
-              {/* Animated underline */}
-              <span className="absolute bottom-0 left-0 h-[3px] w-full bg-primary origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100 group-hover:origin-left" />
-              <style>{`
-                .group:not(:hover) > span.absolute {
-                  transform-origin: right !important;
-                }
-              `}</style>
+              <span className="usage-line absolute bottom-0 left-0 h-[3px] w-full bg-primary" />
             </div>
           ))}
         </div>
