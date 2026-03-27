@@ -52,12 +52,20 @@ const ProjectsSection = () => {
     <section id="projekty" className="bg-background py-14 lg:py-20 border-t border-border">
       {/* Text content in container */}
       <div className="container mx-auto px-4 lg:px-8">
-        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center">
+        {/* Label with horizontal line */}
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-[40px] h-[1px] bg-primary" />
+          <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
+            REFERENČNÉ PROJEKTY
+          </p>
+        </div>
+
+        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
           <span className="text-foreground">Pozrite si naše projekty</span>
           <span className="text-accent">.</span>
         </h2>
 
-        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[560px] mb-12 font-medium text-center mx-auto">
+        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] mb-12 font-medium">
           Pomohli sme architektom, projektantom a stavebným firmám pracovať s presnými dátami a eliminovať chyby pri stavbách.
         </p>
       </div>
