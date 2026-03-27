@@ -53,6 +53,7 @@ const Footer = () => {
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   Ochrana osobných údajov
                 </a>
+              </nav>
 
               {/* Find us on */}
               <div className="flex items-center gap-2 mt-5">
