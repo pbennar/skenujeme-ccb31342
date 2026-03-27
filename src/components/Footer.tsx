@@ -19,7 +19,7 @@ const Footer = () => {
               </a>
               <p className="text-[13px] leading-[1.7] text-primary-foreground max-w-[280px] font-medium mb-3">
                 <span className="font-bold text-accent">Špecialisti na 3D laserové skenovanie.</span>{" "}
-                Našim cieľom je preniesť realitu do digitálneho priestoru tak, aby na nej bolo možné bezpečne navrhovať, plánovať a stavať.
+                Prenášame realitu do digitálneho priestoru tak, aby na nej bolo možné bezpečne navrhovať, plánovať a stavať.
               </p>
               <a href="/Skenujeme-prezentacia.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-accent text-[13px] font-medium hover:underline">
                 <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
