@@ -1,10 +1,11 @@
-import scannerDevice from "@/assets/scanner-device.jpg";
+import faroScanner from "@/assets/faro-scanner.svg";
+import checkIcon from "@/assets/check-icon.svg";
 
 const steps = [
   {
     num: "1",
     title: "SKENOVANIE OBJEKTU",
-    lines: [
+    items: [
       "Objekt sa nasníma z viacerých stanovísk pomocou 3D laserového skenera.",
       "Presnosť merania dosahuje až 1 mm.",
     ],
@@ -12,7 +13,7 @@ const steps = [
   {
     num: "2",
     title: "SPRACOVANIE DÁT",
-    lines: [
+    items: [
       "Z nasnímaných dát vzniká farebné mračno bodov obsahujúce milióny bodov.",
       "Dáta sa následne spracujú do potrebného formátu.",
     ],
@@ -20,7 +21,7 @@ const steps = [
   {
     num: "3",
     title: "TVORBA VÝSTUPOV",
-    lines: [
+    items: [
       "Zo skenovania vznikne:",
       "2D dokumentácia (pôdorysy, rezy, pohľady)",
       "3D model",
@@ -30,7 +31,7 @@ const steps = [
   {
     num: "4",
     title: "ODOVZDANIE DÁT",
-    lines: [
+    items: [
       "Formáty dát vhodné pre projektantov, architektov a stavebné firmy.",
       "Výsledkom je jeden presný zdroj dát pre všetkých.",
     ],
@@ -41,39 +42,46 @@ const ProcessSection = () => {
   return (
     <section id="proces" className="bg-background py-14 lg:py-20 border-t border-border">
       <div className="container mx-auto px-4 lg:px-8">
-        <p className="text-micro uppercase tracking-[0.25em] text-gray-text font-medium mb-2 text-center">
-          3D SKENOVANIE
-        </p>
-        <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground text-center mb-3">
-          Proces 3D skenovania.
+        {/* Label with horizontal line - same style as IntroSection */}
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-[40px] h-[0.5px] bg-primary" />
+          <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
+            3D SKENOVANIE
+          </p>
+        </div>
+
+        {/* Heading - same size as "Vidieť realitu..." */}
+        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
+          <span className="text-foreground">Proces 3D skenovania</span>
+          <span className="text-accent">.</span>
         </h2>
-        <p className="text-body-lg text-gray-text text-center max-w-[480px] mx-auto mb-12">
+
+        {/* Subtitle - same style as "Pri stavebných projektoch..." */}
+        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[560px] mb-12 font-medium">
           Výsledkom je kompletný digitálny obraz reality – nie výsek alebo odhad, ale presný model existujúceho stavu.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-          {/* Left steps */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+          {/* Left steps (1 & 3) */}
           <div className="flex flex-col gap-5">
-            {steps.slice(0, 2).map((step) => (
-              <StepCard key={step.num} {...step} />
-            ))}
+            <StepCard {...steps[0]} />
+            <StepCard {...steps[2]} />
           </div>
 
-          {/* Center image */}
+          {/* Center image - Faro scanner */}
           <div className="flex justify-center items-center">
             <img
-              src={scannerDevice}
-              alt="3D laserový skener"
+              src={faroScanner}
+              alt="3D laserový skener FARO"
               loading="lazy"
-              className="w-full max-w-[260px] h-auto object-contain"
+              className="w-full max-w-[340px] h-auto object-contain"
             />
           </div>
 
-          {/* Right steps */}
+          {/* Right steps (2 & 4) */}
           <div className="flex flex-col gap-5">
-            {steps.slice(2, 4).map((step) => (
-              <StepCard key={step.num} {...step} />
-            ))}
+            <StepCard {...steps[1]} />
+            <StepCard {...steps[3]} />
           </div>
         </div>
       </div>
@@ -81,20 +89,26 @@ const ProcessSection = () => {
   );
 };
 
-const StepCard = ({ num, title, lines }: { num: string; title: string; lines: string[] }) => (
-  <div className="bg-background rounded-lg shadow-sm border border-border p-5">
-    <div className="flex items-start gap-3">
-      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground text-micro font-bold flex items-center justify-center">
-        {num}
+const StepCard = ({ num, title, items }: { num: string; title: string; items: string[] }) => (
+  <div className="bg-background rounded-lg shadow-[0_2px_16px_rgba(0,0,0,0.08)] border border-border/50 p-5 transition-transform duration-300 ease-out hover:scale-105 cursor-default">
+    {/* Green number badge */}
+    <div className="flex items-center gap-3 mb-4">
+      <span className="flex-shrink-0 w-8 h-8 rounded-md bg-primary text-primary-foreground text-[13px] font-extrabold flex items-center justify-center">
+        {num}.
       </span>
-      <div>
-        <p className="text-box-title font-bold text-foreground uppercase tracking-wide mb-2">{title}</p>
-        {lines.map((line, i) => (
-          <p key={i} className="text-body text-gray-text leading-relaxed">
-            {line}
+      <p className="text-[13px] font-extrabold text-foreground uppercase tracking-wide">{title}</p>
+    </div>
+
+    {/* Items with check icons */}
+    <div className="flex flex-col gap-2 pl-1">
+      {items.map((item, i) => (
+        <div key={i} className="flex items-start gap-2.5">
+          <img src={checkIcon} alt="" className="w-[18px] h-[18px] flex-shrink-0 mt-0.5" />
+          <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed font-medium">
+            {item}
           </p>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </div>
 );
