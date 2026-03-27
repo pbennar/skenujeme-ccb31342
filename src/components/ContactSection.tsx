@@ -2,6 +2,7 @@ import ctaBg from "@/assets/cta-bg.png";
 import sendIcon from "@/assets/send-icon.svg";
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const sectionRef = useScrollReveal<HTMLElement>();
@@ -9,6 +10,7 @@ const ContactSection = () => {
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const validate = () => {
     const newErrors: Record<string, boolean> = {};
@@ -21,20 +23,34 @@ const ContactSection = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validate()) return;
     setSending(true);
+    setSubmitError("");
 
-    const subject = encodeURIComponent(`Dopyt od ${form.name} – ${form.company}`);
-    const body = encodeURIComponent(
-      `Meno: ${form.name}\nFirma: ${form.company}\nMobil: ${form.phone}\nE-mail: ${form.email}\n\nSpráva:\n${form.message}`
-    );
-    window.location.href = `mailto:dopyt@aquabt.sk?subject=${subject}&body=${body}`;
+    try {
+      const { data, error } = await supabase.functions.invoke("submit-contact", {
+        body: {
+          name: form.name.trim(),
+          company: form.company.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+        },
+      });
 
-    setTimeout(() => {
-      setSending(false);
+      if (error) {
+        throw error;
+      }
+
       setSubmitted(true);
-    }, 500);
+      setForm({ name: "", company: "", phone: "", email: "", message: "" });
+    } catch (err) {
+      console.error("Submit error:", err);
+      setSubmitError("Nastala chyba pri odosielaní. Skúste to prosím znova.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass = (field: string) =>
@@ -94,6 +110,9 @@ const ContactSection = () => {
                 <p className="text-body text-gray-text font-medium mb-4">
                   Čoskoro sa Vám ozveme
                 </p>
+                {submitError && (
+                  <p className="text-[12px] text-destructive font-medium mb-3">{submitError}</p>
+                )}
                 <div className="flex flex-col gap-3">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input
@@ -138,7 +157,7 @@ const ContactSection = () => {
                     type="button"
                     onClick={handleSubmit}
                     disabled={sending}
-                    className="group inline-flex items-center justify-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors w-full"
+                    className="group inline-flex items-center justify-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors w-full disabled:opacity-70"
                   >
                     <div className="flex flex-col">
                       <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">
