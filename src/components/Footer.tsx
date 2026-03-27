@@ -92,7 +92,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 pt-4 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
           <p className="text-[11px] text-primary-foreground/30 font-medium">
-            Copyright © 2026. All right reserved.
+            Copyright © 2026. All right reserved
           </p>
           <span className="text-[11px] text-primary-foreground/30 font-medium hidden sm:inline">|</span>
           <p className="text-[11px] text-primary-foreground/30 font-medium">
