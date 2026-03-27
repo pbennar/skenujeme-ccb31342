@@ -21,7 +21,7 @@ const UsagesSection = () => {
               key={tag}
               className="usage-card relative bg-muted border border-border rounded-lg px-5 py-4 cursor-default overflow-hidden"
             >
-              <span className="text-[11px] lg:text-[13px] font-light uppercase tracking-[0.28em] text-foreground">
+              <span className="text-[11px] lg:text-[13px] font-normal uppercase tracking-[0.28em] text-foreground">
                 {tag}
               </span>
               <span className="usage-line absolute bottom-0 left-0 h-[3px] w-full bg-primary" />
