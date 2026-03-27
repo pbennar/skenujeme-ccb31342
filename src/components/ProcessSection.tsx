@@ -23,6 +23,8 @@ const steps = [
     title: "TVORBA VÝSTUPOV",
     items: [
       "Zo skenovania vznikne:",
+    ],
+    bullets: [
       "2D dokumentácia (pôdorysy, rezy, pohľady)",
       "3D model",
       "BIM model",
@@ -89,7 +91,7 @@ const ProcessSection = () => {
   );
 };
 
-const StepCard = ({ num, title, items }: { num: string; title: string; items: string[] }) => (
+const StepCard = ({ num, title, items, bullets }: { num: string; title: string; items: string[]; bullets?: string[] }) => (
   <div className="bg-background rounded-lg shadow-[0_2px_16px_rgba(0,0,0,0.08)] border border-border/50 p-5 transition-transform duration-300 ease-out hover:scale-105 cursor-default">
     {/* Green number badge */}
     <div className="flex items-center gap-3 mb-4">
@@ -109,6 +111,20 @@ const StepCard = ({ num, title, items }: { num: string; title: string; items: st
           </p>
         </div>
       ))}
+
+      {/* Yellow bullet sub-items */}
+      {bullets && bullets.length > 0 && (
+        <div className="flex flex-col gap-1.5 pl-7">
+          {bullets.map((bullet, i) => (
+            <div key={i} className="flex items-start gap-2">
+              <span className="w-[7px] h-[7px] rounded-full bg-accent flex-shrink-0 mt-[6px]" />
+              <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed font-medium">
+                {bullet}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 );
