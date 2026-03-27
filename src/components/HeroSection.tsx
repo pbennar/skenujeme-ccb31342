@@ -31,7 +31,11 @@ const HeroSection = () => {
           </span>
           <br />
           <span className="text-[28px] lg:text-[36px] font-extrabold text-primary-foreground">
-            presného 3D digitálneho priestoru
+            presného 3D digitálneho
+          </span>
+          <br className="lg:hidden" />
+          <span className="text-[28px] lg:text-[36px] font-extrabold text-primary-foreground">
+            {" "}priestoru
           </span>
           <span className="text-[28px] lg:text-[36px] font-extrabold text-accent">.</span>
         </h1>

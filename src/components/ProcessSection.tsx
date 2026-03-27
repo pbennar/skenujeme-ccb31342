@@ -63,14 +63,29 @@ const ProcessSection = () => {
           Výsledkom je kompletný digitálny obraz reality – nie výsek alebo odhad, ale presný model existujúceho stavu.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-          {/* Left steps (1 & 3) */}
+        {/* Mobile: image first, then all cards */}
+        <div className="flex flex-col lg:hidden gap-6">
+          <div className="flex justify-center items-center">
+            <img
+              src={faroScanner}
+              alt="3D laserový skener FARO"
+              loading="lazy"
+              className="w-full max-w-[280px] h-auto object-contain"
+            />
+          </div>
+          <div className="flex flex-col gap-5">
+            {steps.map((step) => (
+              <StepCard key={step.num} {...step} />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: original 3-column layout */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6 items-center">
           <div className="flex flex-col gap-5">
             <StepCard {...steps[0]} />
             <StepCard {...steps[2]} />
           </div>
-
-          {/* Center image - Faro scanner */}
           <div className="flex justify-center items-center">
             <img
               src={faroScanner}
@@ -79,8 +94,6 @@ const ProcessSection = () => {
               className="w-full max-w-[340px] h-auto object-contain"
             />
           </div>
-
-          {/* Right steps (2 & 4) */}
           <div className="flex flex-col gap-5">
             <StepCard {...steps[1]} />
             <StepCard {...steps[3]} />
