@@ -2,12 +2,12 @@ import scanRender from "@/assets/scan-render.png";
 import { Check } from "lucide-react";
 
 const benefits = [
-  { title: "Presnosť", desc: "až do 1 mm bez akýchkoľvek odhadov" },
-  { title: "Rýchlosť", desc: "kompletné zameranie v jednom kroku" },
+  { title: "Presnosť", desc: "až do 1 mm bez odhadov" },
+  { title: "Rýchlosť", desc: "zameranie v jednom kroku" },
   { title: "Efektivita", desc: "menej chýb a menej prestojov" },
-  { title: "Komplexnosť dát", desc: "všetko dostupné v jednom modeli" },
+  { title: "Komplexnosť dát", desc: "všetko v jednom modeli" },
   { title: "Spolupráca tímov", desc: "rovnaké dáta pre všetky tímy" },
-  { title: "Špičkové prístroje", desc: "máme prístroje s najnovšími 3D lasermi" },
+  { title: "Špičkové prístroje", desc: "prístroje s najnovšími 3D lasermi" },
 ];
 
 const BenefitsSection = () => {
