@@ -99,7 +99,7 @@ const ProjectsSection = () => {
             </div>
 
             {/* Image carousel */}
-            <div className="overflow-hidden rounded-b-xl" ref={emblaRef}>
+            <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {projects.map((p, i) => (
                   <div key={i} className="min-w-0 shrink-0 grow-0 basis-full">
