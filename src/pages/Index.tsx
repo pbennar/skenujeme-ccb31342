@@ -10,20 +10,24 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <SEOHead />
       <Header />
-      <HeroSection />
-      <IntroSection />
-      <ProcessSection />
-      <ScanTypesSection />
-      <UsagesSection />
-      <BenefitsSection />
-      <OutputsSection />
-      <ProjectsSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <IntroSection />
+        <ProcessSection />
+        <ScanTypesSection />
+        <UsagesSection />
+        <BenefitsSection />
+        <OutputsSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
       <Footer />
       <CookieConsent />
     </div>
