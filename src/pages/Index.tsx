@@ -9,6 +9,7 @@ import OutputsSection from "@/components/OutputsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       <ProjectsSection />
       <ContactSection />
       <Footer />
+      <CookieConsent />
     </div>
   );
 };
