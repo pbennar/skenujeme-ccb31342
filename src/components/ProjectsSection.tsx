@@ -81,11 +81,11 @@ const ProjectsSection = () => {
                 <ChevronLeft className="w-4 h-4 text-primary-foreground" />
               </button>
 
-              <div className="text-center flex-1 px-4">
+              <div className="text-center flex-1 px-4 min-h-[52px] flex flex-col justify-center">
                 <p className="text-[12px] lg:text-[14px] font-extrabold uppercase tracking-wider text-primary-foreground mb-0.5">
                   {projects[selectedIndex]?.title}
                 </p>
-                <p className="text-[13px] lg:text-[15px] text-primary-foreground/70 font-medium">
+                <p className="text-[11px] lg:text-[15px] text-primary-foreground/70 font-medium line-clamp-2">
                   {projects[selectedIndex]?.desc}
                 </p>
               </div>
