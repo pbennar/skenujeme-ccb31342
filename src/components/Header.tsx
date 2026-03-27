@@ -161,7 +161,7 @@ const Header = () => {
             </div>
 
             <a
-              href="#kontakt"
+              href="#ozvite-sa"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-[11px] font-bold uppercase tracking-wider px-5 py-2.5 rounded-[4px] w-fit"
               onClick={(e) => { handleAnchorClick(e); setMobileOpen(false); }}
             >
