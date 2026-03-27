@@ -163,7 +163,7 @@ const Header = () => {
             <a
               href="#kontakt"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-[11px] font-bold uppercase tracking-wider px-5 py-2.5 rounded-[4px] w-fit"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => { handleAnchorClick(e); setMobileOpen(false); }}
             >
               CENOVÁ PONUKA
               <img src={offerIcon} alt="" className="w-[18px] h-[18px]" />

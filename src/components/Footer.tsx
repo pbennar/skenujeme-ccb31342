@@ -45,7 +45,7 @@ const Footer = () => {
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   Výstupy
                 </a>
-                <a href="#projekty" className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
+                <a href="#projekty" onClick={handleAnchorClick} className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   Projekty
                 </a>
