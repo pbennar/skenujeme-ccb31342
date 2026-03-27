@@ -31,10 +31,11 @@ const BenefitsSection = () => {
               <span className="text-foreground">ktorá dokáže </span>
               <span className="text-accent">presne zachytiť</span>
               <br />
-              <span className="text-foreground">existujúci stav.</span>
+              <span className="text-accent">existujúci stav.</span>
             </h2>
             <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium">
-              Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje presnú digitálnu repliku reality.
+              Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje{" "}
+              <span className="font-bold text-foreground">presnú digitálnu repliku reality.</span>
             </p>
           </div>
 
