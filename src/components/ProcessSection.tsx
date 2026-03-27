@@ -23,6 +23,8 @@ const steps = [
     title: "TVORBA VÝSTUPOV",
     items: [
       "Zo skenovania vznikne:",
+    ],
+    bullets: [
       "2D dokumentácia (pôdorysy, rezy, pohľady)",
       "3D model",
       "BIM model",
