@@ -55,11 +55,11 @@ const BenefitsSection = () => {
           {benefits.map((b) => (
             <div
               key={b.title}
-              className="bg-background rounded-lg border border-border shadow-sm p-5 flex items-start gap-3"
+              className="group/card bg-background rounded-lg border border-border shadow-sm p-5 flex items-start gap-3"
             >
               {/* Check icon with pulsing ring */}
-              <div className="relative flex-shrink-0 w-9 h-9 flex items-center justify-center group/check">
-                <span className="absolute inset-0 rounded-full bg-primary/20 group-hover/check:animate-pulse-ring" />
+              <div className="relative flex-shrink-0 w-11 h-11 flex items-center justify-center">
+                <span className="absolute inset-0 rounded-full bg-primary/20 group-hover/card:animate-[pulse-ring_1.5s_ease-in-out_infinite]" />
                 <span className="relative w-7 h-7 rounded-full bg-primary flex items-center justify-center">
                   <Check className="w-3.5 h-3.5 text-primary-foreground" />
                 </span>
