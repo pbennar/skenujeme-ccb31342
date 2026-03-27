@@ -13,7 +13,7 @@ const ProcessSection = () => {
     num: String(idx + 1),
     title: t(step.title, lang),
     items: [...step.items[lang]],
-    bullets: 'bullets' in step ? [...step.bullets![lang]] : undefined,
+    bullets: 'bullets' in step && step.bullets ? [...(step.bullets as Record<string, readonly string[]>)[lang]] : undefined,
   }));
 
   return (
