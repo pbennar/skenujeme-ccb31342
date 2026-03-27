@@ -10,7 +10,7 @@ const outputs = [
   {
     icon: ikona360,
     title: "360° fotografie a vizualizácie",
-    desc: "",
+    desc: "presne naskenovaného objektu",
   },
   {
     icon: ikonaMracno,
