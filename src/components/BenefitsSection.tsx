@@ -18,7 +18,7 @@ const BenefitsSection = () => {
         <div className="flex items-center gap-4 mb-8">
           <div className="w-[40px] h-[1px] bg-primary" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
-            VÝSTUPY A DÁTA
+            HLAVNÉ VÝHODY
           </p>
         </div>
 
@@ -26,13 +26,15 @@ const BenefitsSection = () => {
           {/* Left - same style as IntroSection */}
           <div>
             <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
-              <span className="text-foreground">Dáta použiteľné</span>
+              <span className="text-foreground">Moderná technológia,</span>
               <br />
-              <span className="text-foreground">v BIM nástrojoch</span>
-              <span className="text-accent">.</span>
+              <span className="text-foreground">ktorá dokáže </span>
+              <span className="text-accent">presne zachytiť</span>
+              <br />
+              <span className="text-foreground">existujúci stav.</span>
             </h2>
             <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium">
-              Digitálny model reality obsahujúci milióny presných meraných bodov – možnosť prehliadať v jednoduchom prehliadači – bez nutnosti CAD znalostí.
+              Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje presnú digitálnu repliku reality.
             </p>
           </div>
 
