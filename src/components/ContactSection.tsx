@@ -86,7 +86,7 @@ const ContactSection = () => {
               Radi sa s vami stretneme na konzultácii a pripravíme nezáväznú cenovú ponuku.
             </p>
             <p className="text-[13px] lg:text-[15px] text-primary-foreground font-extrabold" data-reveal data-reveal-delay="3">
-              Stačí sa nám len ozvať
+              Stačí sa nám len ozvať.
             </p>
           </div>
 
