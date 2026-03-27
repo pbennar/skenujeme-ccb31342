@@ -72,3 +72,20 @@
     animation: bounce-gentle 1.5s ease-in-out infinite;
   }
 }
+
+/* Usage card underline animation */
+.usage-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.usage-card:hover .usage-line {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.usage-card:not(:hover) .usage-line {
+  transform: scaleX(0);
+  transform-origin: right;
+}

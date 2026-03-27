@@ -11,18 +11,21 @@ const UsagesSection = () => {
   return (
     <section className="bg-background py-14 lg:py-20 border-t border-border">
       <div className="container mx-auto px-4 lg:px-8 text-center">
-        <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground mb-8">
-          Veľa možností využitia.
+        <h2 className="text-heading-xl lg:text-heading-2xl font-extrabold text-foreground leading-tight mb-8">
+          Veľa možností využitia<span className="text-accent">.</span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-3 max-w-[640px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[720px] mx-auto">
           {tags.map((tag) => (
-            <span
+            <div
               key={tag}
-              className="inline-block border border-border rounded-md px-4 py-2 text-tiny lg:text-xs-nav font-medium uppercase tracking-widest text-foreground"
+              className="usage-card relative bg-background border border-border rounded-lg px-5 py-4 cursor-default overflow-hidden"
             >
-              {tag}
-            </span>
+              <span className="text-[11px] lg:text-[13px] font-semibold uppercase tracking-[0.18em] text-foreground">
+                {tag}
+              </span>
+              <span className="usage-line absolute bottom-0 left-0 h-[3px] w-full bg-primary" />
+            </div>
           ))}
         </div>
       </div>
