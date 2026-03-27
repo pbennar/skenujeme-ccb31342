@@ -1,5 +1,6 @@
 import scanRender from "@/assets/scan-render.png";
 import { Check } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const benefits = [
   { title: "Presnosť", desc: "až do 1 mm bez odhadov" },
@@ -11,11 +12,13 @@ const benefits = [
 ];
 
 const BenefitsSection = () => {
+  const sectionRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="bg-gray-light py-14 lg:py-20">
+    <section className="bg-gray-light py-14 lg:py-20" ref={sectionRef}>
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Label with horizontal line - same as IntroSection */}
-        <div className="flex items-center gap-4 mb-8">
+        {/* Label */}
+        <div className="flex items-center gap-4 mb-8" data-reveal="left">
           <div className="w-[40px] h-[1px] bg-primary" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
             HLAVNÉ VÝHODY
@@ -23,22 +26,22 @@ const BenefitsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-12">
-          {/* Left - same style as IntroSection */}
+          {/* Left */}
           <div>
-            <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
+            <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5" data-reveal data-reveal-delay="1">
               <span className="text-foreground">Moderná technológia,</span>
               <br />
               <span className="text-foreground">ktorá dokáže </span>
               <span className="text-accent">presne zachytiť existujúci stav.</span>
             </h2>
-            <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium">
+            <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] font-medium" data-reveal data-reveal-delay="2">
               Skenery zaznamenávajú milióny bodov za sekundu a vytvárajú tzv. mračno bodov, ktoré predstavuje{" "}
               <span className="font-bold text-foreground">presnú digitálnu repliku reality.</span>
             </p>
           </div>
 
           {/* Right - floating image */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center" data-reveal="right" data-reveal-delay="2">
             <img
               src={scanRender}
               alt="3D sken technológia"
@@ -50,12 +53,13 @@ const BenefitsSection = () => {
 
         {/* 6 benefit cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {benefits.map((b) => (
+          {benefits.map((b, i) => (
             <div
               key={b.title}
               className="group/card bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-5 flex items-start gap-3"
+              data-reveal
+              data-reveal-delay={String(i + 3)}
             >
-              {/* Check icon with pulsing ring */}
               <div className="relative flex-shrink-0 w-11 h-11 flex items-center justify-center">
                 <span className="absolute inset-0 rounded-full bg-primary/20 group-hover/card:animate-[pulse-ring_1.5s_ease-in-out_infinite]" />
                 <span className="relative w-7 h-7 rounded-full bg-primary flex items-center justify-center">

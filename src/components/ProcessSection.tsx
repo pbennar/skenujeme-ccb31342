@@ -1,5 +1,6 @@
 import faroScanner from "@/assets/faro-scanner.svg";
 import checkIcon from "@/assets/check-icon.svg";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const steps = [
   {
@@ -41,31 +42,31 @@ const steps = [
 ];
 
 const ProcessSection = () => {
+  const sectionRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section id="proces" className="bg-background py-14 lg:py-20 border-t border-border">
+    <section id="proces" className="bg-background py-14 lg:py-20 border-t border-border" ref={sectionRef}>
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Label with horizontal line - same style as IntroSection */}
-        <div className="flex items-center gap-4 mb-8">
+        {/* Label with horizontal line */}
+        <div className="flex items-center gap-4 mb-8" data-reveal="left">
           <div className="w-[40px] h-[0.5px] bg-primary" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
             3D SKENOVANIE
           </p>
         </div>
 
-        {/* Heading - same size as "Vidieť realitu..." */}
-        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center">
+        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center" data-reveal data-reveal-delay="1">
           <span className="text-foreground">Proces 3D skenovania</span>
           <span className="text-accent">.</span>
         </h2>
 
-        {/* Subtitle - same style as "Pri stavebných projektoch..." */}
-        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[560px] mb-12 font-medium text-center mx-auto">
+        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[560px] mb-12 font-medium text-center mx-auto" data-reveal data-reveal-delay="2">
           Výsledkom je kompletný digitálny obraz reality – nie výsek alebo odhad, ale presný model existujúceho stavu.
         </p>
 
         {/* Mobile: image first, then all cards */}
         <div className="flex flex-col lg:hidden gap-6">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center" data-reveal="scale" data-reveal-delay="2">
             <img
               src={faroScanner}
               alt="3D laserový skener FARO"
@@ -74,8 +75,10 @@ const ProcessSection = () => {
             />
           </div>
           <div className="flex flex-col gap-5">
-            {steps.map((step) => (
-              <StepCard key={step.num} {...step} />
+            {steps.map((step, i) => (
+              <div key={step.num} data-reveal data-reveal-delay={String(i + 3)}>
+                <StepCard {...step} />
+              </div>
             ))}
           </div>
         </div>
@@ -83,10 +86,14 @@ const ProcessSection = () => {
         {/* Desktop: original 3-column layout */}
         <div className="hidden lg:grid lg:grid-cols-3 gap-6 items-center">
           <div className="flex flex-col gap-5">
-            <StepCard {...steps[0]} />
-            <StepCard {...steps[2]} />
+            <div data-reveal="left" data-reveal-delay="2">
+              <StepCard {...steps[0]} />
+            </div>
+            <div data-reveal="left" data-reveal-delay="4">
+              <StepCard {...steps[2]} />
+            </div>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center" data-reveal="scale" data-reveal-delay="3">
             <img
               src={faroScanner}
               alt="3D laserový skener FARO"
@@ -95,8 +102,12 @@ const ProcessSection = () => {
             />
           </div>
           <div className="flex flex-col gap-5">
-            <StepCard {...steps[1]} />
-            <StepCard {...steps[3]} />
+            <div data-reveal="right" data-reveal-delay="3">
+              <StepCard {...steps[1]} />
+            </div>
+            <div data-reveal="right" data-reveal-delay="5">
+              <StepCard {...steps[3]} />
+            </div>
           </div>
         </div>
       </div>
@@ -106,7 +117,6 @@ const ProcessSection = () => {
 
 const StepCard = ({ num, title, items, bullets }: { num: string; title: string; items: string[]; bullets?: string[] }) => (
   <div className="bg-background rounded-lg shadow-[0_2px_16px_rgba(0,0,0,0.08)] border border-border/50 p-5 transition-transform duration-300 ease-out hover:scale-105 cursor-default">
-    {/* Green number badge */}
     <div className="flex items-center gap-3 mb-4">
       <span className="flex-shrink-0 w-8 h-8 rounded-md bg-primary text-primary-foreground text-[13px] font-extrabold flex items-center justify-center">
         {num}.
@@ -114,7 +124,6 @@ const StepCard = ({ num, title, items, bullets }: { num: string; title: string; 
       <p className="text-[13px] font-extrabold text-foreground uppercase tracking-wide">{title}</p>
     </div>
 
-    {/* Items with check icons */}
     <div className="flex flex-col gap-2 pl-1">
       {items.map((item, i) => (
         <div key={i} className="flex items-start gap-2.5">
@@ -125,7 +134,6 @@ const StepCard = ({ num, title, items, bullets }: { num: string; title: string; 
         </div>
       ))}
 
-      {/* Yellow bullet sub-items */}
       {bullets && bullets.length > 0 && (
         <div className="flex flex-col gap-1.5 pl-7">
           {bullets.map((bullet, i) => (

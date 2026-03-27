@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 import referencia1 from "@/assets/referencia-1.png";
 import referencia2 from "@/assets/referencia-2.png";
@@ -26,6 +27,7 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const sectionRef = useScrollReveal<HTMLElement>();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 50 }, [
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   ]);
@@ -47,32 +49,28 @@ const ProjectsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="projekty" className="bg-background py-14 lg:py-20 border-t border-border">
-      {/* Text content in container */}
+    <section id="projekty" className="bg-background py-14 lg:py-20 border-t border-border" ref={sectionRef}>
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Label with horizontal line */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-4 mb-8" data-reveal="left">
           <div className="w-[40px] h-[1px] bg-primary" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-primary font-semibold">
             REFERENČNÉ PROJEKTY
           </p>
         </div>
 
-        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center">
+        <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center" data-reveal data-reveal-delay="1">
           <span className="text-foreground">Pozrite si naše projekty</span>
           <span className="text-accent">.</span>
         </h2>
 
-        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] mb-12 font-medium text-center mx-auto">
+        <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[420px] mb-12 font-medium text-center mx-auto" data-reveal data-reveal-delay="2">
           Pomohli sme architektom, projektantom a stavebným firmám pracovať s presnými dátami a eliminovať chyby pri stavbách.
         </p>
       </div>
 
-      {/* Carousel */}
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-8" data-reveal data-reveal-delay="3">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="relative">
-            {/* Black bar with title, description and arrows on top */}
             <div className="bg-primary px-6 lg:px-8 py-4 flex items-center justify-between">
               <button
                 onClick={() => emblaApi?.scrollPrev()}
@@ -98,7 +96,6 @@ const ProjectsSection = () => {
               </button>
             </div>
 
-            {/* Image carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {projects.map((p, i) => (

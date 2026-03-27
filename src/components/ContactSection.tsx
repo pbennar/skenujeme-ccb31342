@@ -1,8 +1,10 @@
 import ctaBg from "@/assets/cta-bg.png";
 import sendIcon from "@/assets/send-icon.svg";
 import { useState } from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const ContactSection = () => {
+  const sectionRef = useScrollReveal<HTMLElement>();
   const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -39,7 +41,7 @@ const ContactSection = () => {
     `w-full border ${errors[field] ? 'border-destructive' : 'border-border'} rounded-md px-3 py-2.5 text-body-lg text-foreground placeholder:text-gray-text bg-background focus:outline-none focus:ring-1 focus:ring-primary`;
 
   return (
-    <section className="relative py-14 lg:py-20">
+    <section className="relative py-14 lg:py-20" ref={sectionRef}>
       {/* Background */}
       <div className="absolute inset-0">
         <img src={ctaBg} alt="" className="w-full h-full object-cover" />
@@ -47,8 +49,8 @@ const ContactSection = () => {
       </div>
 
       <div className="container relative mx-auto px-4 lg:px-8">
-        {/* Label with horizontal line */}
-        <div className="flex items-center gap-4 mb-8">
+        {/* Label */}
+        <div className="flex items-center gap-4 mb-8" data-reveal="left">
           <div className="w-[40px] h-[1px] bg-accent" />
           <p className="text-[9px] uppercase tracking-[0.5em] text-accent font-semibold">
             OZVITE SA NÁM
@@ -58,22 +60,22 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Left */}
           <div>
-            <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5">
+            <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5" data-reveal data-reveal-delay="1">
               <span className="font-normal text-primary-foreground">Máte projekt, pri ktorom</span>
               <br />
               <span className="text-primary-foreground">potrebujete </span>
               <span className="text-accent">presné dáta?</span>
             </h2>
-            <p className="text-[13px] lg:text-[15px] text-primary-foreground/70 leading-relaxed max-w-[420px] font-medium mb-4">
+            <p className="text-[13px] lg:text-[15px] text-primary-foreground/70 leading-relaxed max-w-[420px] font-medium mb-4" data-reveal data-reveal-delay="2">
               Radi sa s vami stretneme na konzultácii a pripravíme nezáväznú cenovú ponuku.
             </p>
-            <p className="text-[13px] lg:text-[15px] text-primary-foreground font-extrabold">
+            <p className="text-[13px] lg:text-[15px] text-primary-foreground font-extrabold" data-reveal data-reveal-delay="3">
               Stačí sa nám len ozvať
             </p>
           </div>
 
           {/* Right - Form */}
-          <div className="bg-background rounded-lg p-6 shadow-lg max-w-[380px] lg:ml-auto">
+          <div className="bg-background rounded-lg p-6 shadow-lg max-w-[380px] lg:ml-auto" data-reveal="right" data-reveal-delay="2">
             {submitted ? (
               <div className="text-center py-10">
                 <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
