@@ -70,47 +70,49 @@ const ProjectsSection = () => {
         </p>
       </div>
 
-      {/* Full-width carousel */}
-      <div className="relative">
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {projects.map((p, i) => (
-              <div key={i} className="min-w-0 shrink-0 grow-0 basis-full">
-                <div className="relative">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    loading="lazy"
-                    className="w-full h-[300px] lg:h-[500px] object-cover"
-                  />
-                  {/* Black overlay bar at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-primary px-6 lg:px-12 py-5">
-                    <p className="text-[12px] lg:text-[14px] font-extrabold uppercase tracking-wider text-primary-foreground mb-1">
-                      {p.title}
-                    </p>
-                    <p className="text-[13px] lg:text-[15px] text-primary-foreground/70 font-medium">
-                      {p.desc}
-                    </p>
+      {/* Carousel inside container */}
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="relative">
+          <div className="overflow-hidden rounded-xl" ref={emblaRef}>
+            <div className="flex">
+              {projects.map((p, i) => (
+                <div key={i} className="min-w-0 shrink-0 grow-0 basis-full">
+                  <div className="relative">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      className="w-full h-[300px] lg:h-[500px] object-cover"
+                    />
+                    {/* Black overlay bar at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-primary px-6 lg:px-12 py-5">
+                      <p className="text-[12px] lg:text-[14px] font-extrabold uppercase tracking-wider text-primary-foreground mb-1">
+                        {p.title}
+                      </p>
+                      <p className="text-[13px] lg:text-[15px] text-primary-foreground/70 font-medium">
+                        {p.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Navigation arrows */}
-        <button
-          onClick={() => emblaApi?.scrollPrev()}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-primary-foreground/30 bg-primary/50 backdrop-blur-sm flex items-center justify-center hover:bg-primary/70 transition-colors z-10"
-        >
-          <ChevronLeft className="w-5 h-5 text-primary-foreground" />
-        </button>
-        <button
-          onClick={() => emblaApi?.scrollNext()}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-primary-foreground/30 bg-primary/50 backdrop-blur-sm flex items-center justify-center hover:bg-primary/70 transition-colors z-10"
-        >
-          <ChevronRight className="w-5 h-5 text-primary-foreground" />
-        </button>
+          {/* Navigation arrows */}
+          <button
+            onClick={() => emblaApi?.scrollPrev()}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-primary-foreground/30 bg-primary/50 backdrop-blur-sm flex items-center justify-center hover:bg-primary/70 transition-colors z-10"
+          >
+            <ChevronLeft className="w-5 h-5 text-primary-foreground" />
+          </button>
+          <button
+            onClick={() => emblaApi?.scrollNext()}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-primary-foreground/30 bg-primary/50 backdrop-blur-sm flex items-center justify-center hover:bg-primary/70 transition-colors z-10"
+          >
+            <ChevronRight className="w-5 h-5 text-primary-foreground" />
+          </button>
+        </div>
       </div>
     </section>
   );
