@@ -1,4 +1,5 @@
 import arrowDown from "@/assets/arrow-down.svg";
+import { handleAnchorClick } from "@/lib/smoothScroll";
 
 const IntroSection = () => {
   return (
