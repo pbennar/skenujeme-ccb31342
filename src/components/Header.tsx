@@ -136,7 +136,7 @@ const Header = () => {
                     ? "text-accent"
                     : "text-primary-foreground/70 hover:text-primary-foreground"
                 }`}
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => { handleAnchorClick(e); setMobileOpen(false); }}
               >
                 {item.label}
               </a>
