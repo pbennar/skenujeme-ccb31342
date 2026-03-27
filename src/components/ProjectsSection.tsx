@@ -26,7 +26,7 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 50 }, [
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -68,12 +68,12 @@ const ProjectsSection = () => {
         </p>
       </div>
 
-      {/* Carousel with gray background */}
-      <div className="bg-gray-light py-10">
+      {/* Carousel */}
+      <div className="container mx-auto px-4 lg:px-8">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="relative">
             {/* Black bar with title, description and arrows on top */}
-            <div className="bg-primary rounded-t-xl px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div className="bg-primary px-6 lg:px-8 py-4 flex items-center justify-between">
               <button
                 onClick={() => emblaApi?.scrollPrev()}
                 className="flex-shrink-0 w-9 h-9 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors"
@@ -99,7 +99,7 @@ const ProjectsSection = () => {
             </div>
 
             {/* Image carousel */}
-            <div className="overflow-hidden rounded-b-xl" ref={emblaRef}>
+            <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {projects.map((p, i) => (
                   <div key={i} className="min-w-0 shrink-0 grow-0 basis-full">
