@@ -1,25 +1,26 @@
 import { ArrowRight } from "lucide-react";
-import cardBuilding from "@/assets/card-building.jpg";
-import cardHalls from "@/assets/card-halls.jpg";
-import cardMonument from "@/assets/card-monument.jpg";
-import cardConstruction from "@/assets/card-construction.jpg";
+import arrowDown from "@/assets/arrow-down.svg";
+import cardBuilding from "@/assets/card-building.png";
+import cardHalls from "@/assets/card-halls.png";
+import cardMonument from "@/assets/card-monument.png";
+import cardConstruction from "@/assets/card-construction.png";
 
 const cards = [
   {
     image: cardBuilding,
-    label: "BUDOVY | HALY |\nVÝROBNÉ LINKY",
+    parts: ["BUDOVY", "HALY", "VÝROBNÉ LINKY"],
   },
   {
     image: cardHalls,
-    label: "CESTY | MOSTY |\nKRIŽOVATKY | SPEVNENÉ PLOCHY",
+    parts: ["CESTY", "MOSTY", "KRIŽOVATKY", "SPEVNENÉ PLOCHY"],
   },
   {
     image: cardMonument,
-    label: "PAMIATKY | DOMY |\nTECHNOLOGICKÉ CELKY",
+    parts: ["PAMIATKY", "DOMY", "TECHNOLOGICKÉ CELKY"],
   },
   {
     image: cardConstruction,
-    label: "ROZOSTAVANÉ STAVBY |\nSTAVEBNÉ DETAILY",
+    parts: ["ROZOSTAVANÉ STAVBY", "STAVEBNÉ DETAILY"],
   },
 ];
 
@@ -27,13 +28,11 @@ const ScanTypesSection = () => {
   return (
     <section className="bg-background py-14 lg:py-20 border-t border-border">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Heading - same style as ProcessSection */}
         <h2 className="text-[28px] lg:text-[36px] font-extrabold leading-[1.15] mb-5 text-center">
           <span className="text-foreground">Čo dokážeme naskenovať</span>
           <span className="text-accent">.</span>
         </h2>
 
-        {/* Subtitle - same style as ProcessSection */}
         <p className="text-[13px] lg:text-[15px] text-gray-text leading-relaxed max-w-[560px] mb-12 font-medium text-center mx-auto">
           3D laserové skenovanie využívame pri rôznych typoch objektov a projektov.
         </p>
@@ -44,23 +43,25 @@ const ScanTypesSection = () => {
               key={i}
               className="bg-background rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.10)] transition-transform duration-300 ease-out hover:scale-105 cursor-default"
             >
-              {/* Image with shadow underneath */}
-              <div className="p-3 pb-0">
-                <div className="rounded-lg overflow-hidden shadow-[0_6px_20px_rgba(0,0,0,0.15)]">
-                  <img
-                    src={card.image}
-                    alt={card.label}
-                    loading="lazy"
-                    className="w-full h-[120px] lg:h-[160px] object-cover"
-                  />
-                </div>
+              {/* Image edge-to-edge top/left/right */}
+              <div className="overflow-hidden">
+                <img
+                  src={card.image}
+                  alt={card.parts.join(" | ")}
+                  loading="lazy"
+                  className="w-full h-[120px] lg:h-[160px] object-cover"
+                />
               </div>
 
-              {/* Yellow divider + bold label */}
+              {/* Bold label with yellow pipes */}
               <div className="p-4 pt-3">
-                <div className="w-10 h-[3px] bg-accent mb-2.5 rounded-full" />
-                <p className="text-[10px] lg:text-[12px] font-extrabold uppercase tracking-wider text-foreground whitespace-pre-line leading-snug">
-                  {card.label}
+                <p className="text-[10px] lg:text-[12px] font-extrabold uppercase tracking-wider text-foreground leading-snug">
+                  {card.parts.map((part, j) => (
+                    <span key={j}>
+                      {j > 0 && <span className="text-accent"> | </span>}
+                      {part}
+                    </span>
+                  ))}
                 </p>
               </div>
             </div>
@@ -70,14 +71,16 @@ const ScanTypesSection = () => {
         <div className="flex flex-col items-center">
           <a
             href="#projekty"
-            className="group inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold text-body uppercase tracking-wider px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
+            className="group inline-flex items-center gap-4 bg-primary text-primary-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary/90 transition-colors"
           >
-            POZRIEŤ PROJEKTY
-            <ArrowRight className="w-3.5 h-3.5 group-hover:animate-bounce-gentle" />
+            <div className="flex flex-col">
+              <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">POZRIEŤ PROJEKTY</span>
+              <span className="font-semibold text-[10px] tracking-[0.08em] text-primary-foreground/80 -mt-0.5">
+                kde sme využili 3D skenovanie
+              </span>
+            </div>
+            <img src={arrowDown} alt="" className="w-[20px] h-[20px] brightness-0 invert group-hover-float" />
           </a>
-          <span className="text-micro text-gray-text mt-1.5">
-            kde sme využili 3D skenovanie
-          </span>
         </div>
       </div>
     </section>
