@@ -1,12 +1,10 @@
 import heroBg from "@/assets/hero-bg.svg";
 import arrowDown from "@/assets/arrow-down.svg";
+import { smoothScrollTo, handleAnchorClick } from "@/lib/smoothScroll";
 
 const HeroSection = () => {
   const handleScrollDown = () => {
-    const target = document.getElementById("skenovanie");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    smoothScrollTo("skenovanie");
   };
 
   return (
