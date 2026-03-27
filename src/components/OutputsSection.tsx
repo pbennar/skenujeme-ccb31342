@@ -79,7 +79,7 @@ const OutputsSection = () => {
             {outputs.map((o, i) => (
               <div
                 key={i}
-                className="bg-background rounded-lg border border-border shadow-sm p-5 flex items-center gap-4"
+                className="bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-5 flex items-center gap-4 transition-transform duration-300 ease-out hover:scale-105 cursor-default"
               >
                 {/* Yellow rounded square icon */}
                 <div className="flex-shrink-0 w-11 h-11 rounded-lg bg-accent flex items-center justify-center">
