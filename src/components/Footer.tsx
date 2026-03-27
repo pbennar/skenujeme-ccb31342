@@ -49,7 +49,10 @@ const Footer = () => {
                   <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
                   Projekty
                 </a>
-              </nav>
+                <a href="/ochrana-osobnych-udajov" className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/60 hover:text-primary-foreground font-medium">
+                  <img src={arrowCircle} alt="" className="w-[14px] h-[14px]" />
+                  Ochrana osobných údajov
+                </a>
 
               {/* Find us on */}
               <div className="flex items-center gap-2 mt-5">
