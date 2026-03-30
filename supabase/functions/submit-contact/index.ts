@@ -55,16 +55,51 @@ serve(async (req) => {
       );
     }
 
-    // Send notification email to dopyt@aquabt.sk
-    const RECIPIENT = "dopyt@aquabt.sk";
+    // Send notification email via Resend
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    if (!RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not configured");
+      return new Response(
+        JSON.stringify({ error: "Email service not configured" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
-    // Use Supabase's built-in email or just log for now
-    console.log(`New contact form submission from ${name} (${email})`);
-    console.log(`Company: ${company}, Phone: ${phone}`);
-    console.log(`Message: ${message}`);
+    const emailResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Kontaktný formulár <onboarding@resend.dev>",
+        to: ["info@pekneprezky.sk"],
+        subject: `Nová správa od ${name} (${company})`,
+        html: `
+          <h2>Nová správa z kontaktného formulára</h2>
+          <table style="border-collapse:collapse;width:100%;max-width:600px;">
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Meno:</td><td style="padding:8px;border-bottom:1px solid #eee;">${name}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Firma:</td><td style="padding:8px;border-bottom:1px solid #eee;">${company}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Telefón:</td><td style="padding:8px;border-bottom:1px solid #eee;">${phone}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">E-mail:</td><td style="padding:8px;border-bottom:1px solid #eee;">${email}</td></tr>
+          </table>
+          <h3 style="margin-top:20px;">Správa:</h3>
+          <p style="background:#f9f9f9;padding:15px;border-radius:5px;">${message}</p>
+        `,
+      }),
+    });
+
+    if (!emailResponse.ok) {
+      const errorData = await emailResponse.text();
+      console.error("Resend error:", errorData);
+      // Don't fail the whole request - data is saved in DB
+      console.warn("Email notification failed but submission was saved");
+    } else {
+      console.log(`Email notification sent to info@pekneprezky.sk`);
+    }
 
     return new Response(
-      JSON.stringify({ success: true, message: "Submission saved successfully" }),
+      JSON.stringify({ success: true, message: "Submission saved and email sent" }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
