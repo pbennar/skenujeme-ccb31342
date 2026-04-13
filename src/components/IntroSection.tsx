@@ -46,7 +46,7 @@ const IntroSection = () => {
             <a
               href="#proces"
               onClick={handleAnchorClick}
-              className="group inline-flex items-center gap-4 bg-primary text-primary-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-primary/90 transition-colors w-fit"
+              className="group inline-flex items-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-accent/90 transition-colors w-fit"
             >
               <div className="flex flex-col">
                 <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">{t(i.ctaMain, lang)}</span>
