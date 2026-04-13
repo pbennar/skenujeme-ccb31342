@@ -7,6 +7,7 @@ export const translations = {
     proces: { sk: "AKO TO FUNGUJE", en: "HOW IT WORKS" },
     vystupy: { sk: "VÝSTUPY", en: "OUTPUTS" },
     projekty: { sk: "PROJEKTY", en: "PROJECTS" },
+    referencie: { sk: "REFERENCIE", en: "REFERENCES" },
     kontakt: { sk: "KONTAKT", en: "CONTACT" },
     cta: { sk: "CENOVÁ PONUKA", en: "GET A QUOTE" },
   },

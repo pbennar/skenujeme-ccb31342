@@ -13,6 +13,7 @@ const navItems = [
   { labelKey: "proces" as const, href: "#proces" },
   { labelKey: "vystupy" as const, href: "#vystupy" },
   { labelKey: "projekty" as const, href: "#projekty" },
+  { labelKey: "referencie" as const, href: "#projekty" },
   { labelKey: "kontakt" as const, href: "#kontakt" },
 ];
 
