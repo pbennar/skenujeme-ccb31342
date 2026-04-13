@@ -47,7 +47,7 @@ const OutputsSection = () => {
 
             <div className="flex items-stretch gap-4" data-reveal data-reveal-delay="3">
               {software.map((s) => (
-                <div key={s.alt} className="bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-4 flex items-center justify-center">
+                <div key={s.alt} className="bg-background rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.10)] p-4 flex items-center justify-center transition-colors duration-300 hover:bg-muted">
                   <img src={s.logo} alt={s.alt} className={`${s.alt === 'Revit' ? 'h-[36px] lg:h-[42px]' : 'h-[28px] lg:h-[32px]'} object-contain`} />
                 </div>
               ))}
