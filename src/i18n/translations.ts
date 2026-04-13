@@ -14,7 +14,7 @@ export const translations = {
   // Hero
   hero: {
     subtitle: { sk: "VERNÁ REALITA V 3D BEZ DOHADOV", en: "TRUE REALITY IN 3D WITHOUT GUESSWORK" },
-    heading1: { sk: "Prenášame reálny svet", en: "We bring the real world" },
+    heading1: { sk: "Prenášame svet do 3D modelov", en: "We bring the world into 3D models" },
     heading2: { sk: "do ", en: "into " },
     heading3: { sk: "presného 3D", en: "precise 3D" },
     heading4: { sk: "digitálneho priestoru", en: "digital space" },
