@@ -6,12 +6,12 @@ const SEOHead = () => {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://skenujeme.lovable.app/#organization",
+    "@id": "https://skenujeme.sk/#organization",
     name: "Skenujeme.sk – AquaBT s.r.o.",
     alternateName: "Skenujeme.sk",
-    url: "https://skenujeme.lovable.app",
-    logo: "https://skenujeme.lovable.app/logo.svg",
-    image: "https://skenujeme.lovable.app/og-image.png",
+    url: "https://skenujeme.sk",
+    logo: "https://skenujeme.sk/logo.svg",
+    image: "https://skenujeme.sk/og-image.png",
     description:
       lang === "sk"
         ? "Špecialisti na 3D laserové skenovanie budov, hál, ciest a pamiatok s presnosťou do 1 mm. Mračno bodov, BIM modely, 2D výkresy."
@@ -87,7 +87,7 @@ const SEOHead = () => {
     provider: {
       "@type": "ProfessionalService",
       name: "AquaBT s.r.o.",
-      url: "https://skenujeme.lovable.app",
+      url: "https://skenujeme.sk",
     },
     serviceType: "3D Laser Scanning",
     areaServed: {
@@ -233,11 +233,11 @@ const SEOHead = () => {
       lang === "sk"
         ? "Prenášame reálny svet do presného 3D digitálneho priestoru. 3D laserové skenovanie s presnosťou až do 1 mm."
         : "We bring the real world into precise 3D digital space. 3D laser scanning with accuracy up to 1 mm.",
-    url: "https://skenujeme.lovable.app",
+    url: "https://skenujeme.sk",
     inLanguage: lang === "sk" ? "sk-SK" : "en",
     isPartOf: {
       "@type": "WebSite",
-      url: "https://skenujeme.lovable.app",
+      url: "https://skenujeme.sk",
       name: "Skenujeme.sk",
     },
   };
