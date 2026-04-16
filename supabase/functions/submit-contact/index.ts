@@ -73,7 +73,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: "Kontaktný formulár <onboarding@resend.dev>",
-        to: ["dopyt@aquabt.sk"],
+        to: ["peter.bennar@gmail.com"],
         subject: `Nová správa od ${name} (${company})`,
         html: `
           <h2>Nová správa z kontaktného formulára</h2>
@@ -95,7 +95,7 @@ serve(async (req) => {
       // Don't fail the whole request - data is saved in DB
       console.warn("Email notification failed but submission was saved");
     } else {
-      console.log(`Email notification sent to dopyt@aquabt.sk`);
+      console.log(`Email notification sent to peter.bennar@gmail.com`);
     }
 
     return new Response(
