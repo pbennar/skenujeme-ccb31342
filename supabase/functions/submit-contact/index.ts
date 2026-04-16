@@ -73,7 +73,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: "Kontaktný formulár <onboarding@resend.dev>",
-        to: ["peter.bennar@gmail.com"],
+        to: ["dopyt@skenujeme.sk"],
         subject: `Nová správa od ${name} (${company})`,
         html: `
           <h2>Nová správa z kontaktného formulára</h2>
