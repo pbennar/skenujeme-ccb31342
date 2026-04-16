@@ -95,7 +95,7 @@ serve(async (req) => {
       // Don't fail the whole request - data is saved in DB
       console.warn("Email notification failed but submission was saved");
     } else {
-      console.log(`Email notification sent to peter.bennar@gmail.com`);
+      console.log(`Email notification sent to dopyt@skenujeme.sk`);
     }
 
     return new Response(
