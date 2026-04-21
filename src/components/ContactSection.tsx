@@ -180,39 +180,23 @@ const ContactSection = () => {
                   </div>
                   <div className="space-y-0.5">
                     <div className={cn(
-                      "grid grid-cols-[118px_minmax(0,1fr)] gap-2",
+                      "flex items-center rounded-md border bg-background px-3",
+                      errors.phone ? "border-destructive" : "border-border",
                     )}>
-                      <div className={cn(
-                        "flex items-center rounded-md border bg-background px-3",
-                        errors.phone ? "border-destructive" : "border-border",
-                      )}>
-                        <span className="text-[18px] leading-none mr-2" aria-hidden="true">{selectedCountry.flag}</span>
-                        <select
-                          value={form.phoneCode}
-                          onChange={(e) => { setForm({ ...form, phoneCode: e.target.value }); setErrors({ ...errors, phone: "" }); }}
-                          className="w-full bg-transparent text-body font-medium text-foreground focus:outline-none"
-                          aria-label={t(c.phoneCode, lang)}
-                        >
-                          {COUNTRY_CODES.map((country) => (
-                            <option key={country.code} value={country.code}>
-                              {country.code}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      <span className="text-[18px] leading-none mr-2" aria-hidden="true">{detectedCountry.flag}</span>
                       <input
                         type="tel"
-                        inputMode="numeric"
-                        placeholder={selectedCountry.placeholder}
+                        inputMode="tel"
+                        placeholder={detectedCountry.code}
                         value={form.phone}
                         onChange={(e) => {
-                          const digitsOnly = e.target.value.replace(/\D/g, "");
-                          setForm({ ...form, phone: digitsOnly });
+                          const sanitized = e.target.value.replace(/[^\d+\s]/g, "");
+                          setForm({ ...form, phone: sanitized });
                           setErrors({ ...errors, phone: "" });
                         }}
-                        className={inputClass('phone')}
+                        className="w-full bg-transparent py-2 text-body text-foreground placeholder:text-gray-text focus:outline-none"
                         aria-invalid={Boolean(errors.phone)}
-                        maxLength={selectedCountry.maxLength}
+                        maxLength={18}
                       />
                     </div>
                     <p className="text-[12px] text-destructive font-medium min-h-4">{errors.phone || ""}</p>
