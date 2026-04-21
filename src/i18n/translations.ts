@@ -239,6 +239,7 @@ export const translations = {
     name: { sk: "Meno *", en: "Name *" },
     company: { sk: "Firma *", en: "Company *" },
     phone: { sk: "Mobil *", en: "Phone *" },
+    phoneCode: { sk: "Predvoľba", en: "Dial code" },
     email: { sk: "E-mail *", en: "Email *" },
     message: { sk: "Popíšte čo potrebujete naskenovať *", en: "Describe what you need scanned *" },
     submit: { sk: "ODOSLAŤ SPRÁVU", en: "SEND MESSAGE" },
@@ -246,6 +247,9 @@ export const translations = {
     sending: { sk: "ODOSIELAM...", en: "SENDING..." },
     successTitle: { sk: "Ďakujeme za správu.", en: "Thank you for your message." },
     successText: { sk: "Čoskoro sa vám ozveme.", en: "We'll get back to you soon." },
+    required: { sk: "Toto pole je povinné.", en: "This field is required." },
+    emailInvalid: { sk: "Zadajte správny e-mail.", en: "Enter a valid email address." },
+    phoneInvalid: { sk: "Zadajte správne mobilné číslo pre zvolenú predvoľbu.", en: "Enter a valid mobile number for the selected dial code." },
     error: { sk: "Nastala chyba pri odosielaní. Skúste to prosím znova.", en: "An error occurred while sending. Please try again." },
   },
 

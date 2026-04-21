@@ -5,24 +5,58 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { translations, t } from "@/i18n/translations";
+import { cn } from "@/lib/utils";
+
+const COUNTRY_CODES = [
+  { code: "+421", flag: "🇸🇰", label: "SK", minLength: 9, maxLength: 9, placeholder: "915 714 091" },
+  { code: "+420", flag: "🇨🇿", label: "CZ", minLength: 9, maxLength: 9, placeholder: "601 123 456" },
+  { code: "+43", flag: "🇦🇹", label: "AT", minLength: 10, maxLength: 13, placeholder: "664 1234567" },
+  { code: "+49", flag: "🇩🇪", label: "DE", minLength: 10, maxLength: 13, placeholder: "1512 3456789" },
+  { code: "+48", flag: "🇵🇱", label: "PL", minLength: 9, maxLength: 9, placeholder: "512 345 678" },
+  { code: "+36", flag: "🇭🇺", label: "HU", minLength: 9, maxLength: 9, placeholder: "20 123 4567" },
+  { code: "+44", flag: "🇬🇧", label: "GB", minLength: 10, maxLength: 10, placeholder: "7700 900123" },
+] as const;
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
 const ContactSection = () => {
   const sectionRef = useScrollReveal<HTMLElement>();
   const { lang } = useLanguage();
   const c = translations.contact;
-  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", message: "" });
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [form, setForm] = useState({
+    name: "",
+    company: "",
+    phoneCode: "+421",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
+  const selectedCountry = COUNTRY_CODES.find((country) => country.code === form.phoneCode) ?? COUNTRY_CODES[0];
+
   const validate = () => {
-    const newErrors: Record<string, boolean> = {};
-    if (!form.name.trim()) newErrors.name = true;
-    if (!form.company.trim()) newErrors.company = true;
-    if (!form.phone.trim()) newErrors.phone = true;
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = true;
-    if (!form.message.trim()) newErrors.message = true;
+    const newErrors: Record<string, string> = {};
+    const email = form.email.trim();
+    const phoneDigits = form.phone.replace(/\D/g, "");
+
+    if (!form.name.trim()) newErrors.name = t(c.required, lang);
+    if (!form.company.trim()) newErrors.company = t(c.required, lang);
+    if (!phoneDigits) {
+      newErrors.phone = t(c.required, lang);
+    } else if (phoneDigits.length < selectedCountry.minLength || phoneDigits.length > selectedCountry.maxLength) {
+      newErrors.phone = t(c.phoneInvalid, lang);
+    }
+    if (!email) {
+      newErrors.email = t(c.required, lang);
+    } else if (!EMAIL_REGEX.test(email)) {
+      newErrors.email = t(c.emailInvalid, lang);
+    }
+    if (!form.message.trim()) newErrors.message = t(c.required, lang);
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -33,11 +67,12 @@ const ContactSection = () => {
     setSubmitError("");
 
     try {
-      const { data, error } = await supabase.functions.invoke("submit-contact", {
+      const fullPhone = `${form.phoneCode} ${form.phone.replace(/\D/g, "")}`;
+      const { error } = await supabase.functions.invoke("submit-contact", {
         body: {
           name: form.name.trim(),
           company: form.company.trim(),
-          phone: form.phone.trim(),
+          phone: fullPhone,
           email: form.email.trim(),
           message: form.message.trim(),
         },
@@ -46,7 +81,8 @@ const ContactSection = () => {
       if (error) throw error;
 
       setSubmitted(true);
-      setForm({ name: "", company: "", phone: "", email: "", message: "" });
+      setForm({ name: "", company: "", phoneCode: "+421", phone: "", email: "", message: "" });
+      setErrors({});
     } catch (err) {
       console.error("Submit error:", err);
       setSubmitError(t(c.error, lang));
@@ -56,7 +92,10 @@ const ContactSection = () => {
   };
 
   const inputClass = (field: string) =>
-    `w-full border ${errors[field] ? 'border-destructive' : 'border-border'} rounded-md px-3 py-2.5 text-body-lg text-foreground placeholder:text-gray-text bg-background focus:outline-none focus:ring-1 focus:ring-primary`;
+    cn(
+      "w-full border rounded-md px-3 py-2.5 text-body-lg text-foreground placeholder:text-gray-text bg-background focus:outline-none focus:ring-1 focus:ring-primary",
+      errors[field] ? "border-destructive" : "border-border",
+    );
 
   return (
     <section id="ozvite-sa" className="relative py-14 lg:py-20" ref={sectionRef}>
@@ -117,40 +156,87 @@ const ContactSection = () => {
                       type="text"
                       placeholder={t(c.name, lang)}
                       value={form.name}
-                      onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: false }); }}
+                      onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: "" }); }}
                       className={inputClass('name')}
+                      aria-invalid={Boolean(errors.name)}
                     />
                     <input
                       type="text"
                       placeholder={t(c.company, lang)}
                       value={form.company}
-                      onChange={(e) => { setForm({ ...form, company: e.target.value }); setErrors({ ...errors, company: false }); }}
+                      onChange={(e) => { setForm({ ...form, company: e.target.value }); setErrors({ ...errors, company: "" }); }}
                       className={inputClass('company')}
+                      aria-invalid={Boolean(errors.company)}
                     />
                   </div>
+                  {(errors.name || errors.company) && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 -mt-1">
+                      <p className="text-[12px] text-destructive font-medium min-h-4">{errors.name || ""}</p>
+                      <p className="text-[12px] text-destructive font-medium min-h-4">{errors.company || ""}</p>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input
-                      type="tel"
-                      placeholder={t(c.phone, lang)}
-                      value={form.phone}
-                      onChange={(e) => { setForm({ ...form, phone: e.target.value }); setErrors({ ...errors, phone: false }); }}
-                      className={inputClass('phone')}
-                    />
+                    <div className="space-y-1.5">
+                      <div className={cn(
+                        "grid grid-cols-[118px_minmax(0,1fr)] gap-2",
+                      )}>
+                        <div className={cn(
+                          "flex items-center rounded-md border bg-background px-3",
+                          errors.phone ? "border-destructive" : "border-border",
+                        )}>
+                          <span className="text-[18px] leading-none mr-2" aria-hidden="true">{selectedCountry.flag}</span>
+                          <select
+                            value={form.phoneCode}
+                            onChange={(e) => { setForm({ ...form, phoneCode: e.target.value }); setErrors({ ...errors, phone: "" }); }}
+                            className="w-full bg-transparent text-body font-medium text-foreground focus:outline-none"
+                            aria-label={t(c.phoneCode, lang)}
+                          >
+                            {COUNTRY_CODES.map((country) => (
+                              <option key={country.code} value={country.code}>
+                                {country.code}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <input
+                          type="tel"
+                          inputMode="numeric"
+                          placeholder={selectedCountry.placeholder}
+                          value={form.phone}
+                          onChange={(e) => {
+                            const digitsOnly = e.target.value.replace(/\D/g, "");
+                            setForm({ ...form, phone: digitsOnly });
+                            setErrors({ ...errors, phone: "" });
+                          }}
+                          className={inputClass('phone')}
+                          aria-invalid={Boolean(errors.phone)}
+                          maxLength={selectedCountry.maxLength}
+                        />
+                      </div>
+                      <p className="text-[12px] text-destructive font-medium min-h-4">{errors.phone || ""}</p>
+                    </div>
                     <input
                       type="email"
                       placeholder={t(c.email, lang)}
                       value={form.email}
-                      onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: false }); }}
+                      onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: "" }); }}
                       className={inputClass('email')}
+                      aria-invalid={Boolean(errors.email)}
                     />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 -mt-1">
+                    <div />
+                    <p className="text-[12px] text-destructive font-medium min-h-4">{errors.email || ""}</p>
                   </div>
                   <textarea
                     placeholder={t(c.message, lang)}
                     value={form.message}
-                    onChange={(e) => { setForm({ ...form, message: e.target.value }); setErrors({ ...errors, message: false }); }}
+                      onChange={(e) => { setForm({ ...form, message: e.target.value }); setErrors({ ...errors, message: "" }); }}
                     rows={3}
                     className={`${inputClass('message')} resize-none`}
+                      aria-invalid={Boolean(errors.message)}
                   />
+                  <p className="text-[12px] text-destructive font-medium min-h-4 -mt-1">{errors.message || ""}</p>
                   <button
                     type="button"
                     onClick={handleSubmit}
