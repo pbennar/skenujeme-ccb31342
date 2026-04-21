@@ -8,10 +8,32 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+const COUNTRY_CODES = [
+  { code: "+421", minLength: 9, maxLength: 9 },
+  { code: "+420", minLength: 9, maxLength: 9 },
+  { code: "+43", minLength: 10, maxLength: 13 },
+  { code: "+49", minLength: 10, maxLength: 13 },
+  { code: "+48", minLength: 9, maxLength: 9 },
+  { code: "+36", minLength: 9, maxLength: 9 },
+  { code: "+44", minLength: 10, maxLength: 10 },
+] as const;
+
+const isValidMobilePhone = (value: string) => {
+  const compact = value.replace(/\s+/g, "").trim();
+  const country = COUNTRY_CODES.find((item) => compact.startsWith(item.code));
+
+  if (!country) return false;
+
+  const localNumber = compact.slice(country.code.length).replace(/\D/g, "");
+  return localNumber.length >= country.minLength && localNumber.length <= country.maxLength;
+};
+
 const ContactSchema = z.object({
   name: z.string().trim().min(1).max(255),
   company: z.string().trim().min(1).max(255),
-  phone: z.string().trim().min(1).max(50),
+  phone: z.string().trim().min(1).max(50).refine(isValidMobilePhone, {
+    message: "Invalid mobile phone number",
+  }),
   email: z.string().trim().email().max(255),
   message: z.string().trim().min(1).max(5000),
 });
