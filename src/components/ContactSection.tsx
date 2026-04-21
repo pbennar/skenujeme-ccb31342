@@ -93,7 +93,7 @@ const ContactSection = () => {
 
   const inputClass = (field: string) =>
     cn(
-      "w-full border rounded-md px-3 py-2.5 text-body-lg text-foreground placeholder:text-gray-text bg-background focus:outline-none focus:ring-1 focus:ring-primary",
+      "w-full border rounded-md px-3 py-2 text-body text-foreground placeholder:text-gray-text bg-background focus:outline-none focus:ring-1 focus:ring-primary",
       errors[field] ? "border-destructive" : "border-border",
     );
 
@@ -128,7 +128,7 @@ const ContactSection = () => {
             </p>
           </div>
 
-          <div className="bg-background rounded-lg p-6 shadow-lg max-w-[380px] lg:ml-auto" data-reveal="right" data-reveal-delay="2">
+          <div className="bg-background rounded-lg p-5 shadow-lg max-w-[380px] lg:ml-auto" data-reveal="right" data-reveal-delay="2">
             {submitted ? (
               <div className="text-center py-10">
                 <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -150,8 +150,8 @@ const ContactSection = () => {
                 {submitError && (
                   <p className="text-[12px] text-destructive font-medium mb-3">{submitError}</p>
                 )}
-                <div className="flex flex-col gap-2">
-                  <div className="space-y-1.5">
+                <div className="flex flex-col gap-1.5">
+                  <div className="space-y-1">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <input
                         type="text"
@@ -175,7 +175,7 @@ const ContactSection = () => {
                       <p className="text-[12px] text-destructive font-medium min-h-4">{errors.company || ""}</p>
                     </div>
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     <div className={cn(
                       "grid grid-cols-[118px_minmax(0,1fr)] gap-2",
                     )}>
@@ -214,7 +214,7 @@ const ContactSection = () => {
                     </div>
                     <p className="text-[12px] text-destructive font-medium min-h-4">{errors.phone || ""}</p>
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     <input
                       type="email"
                       placeholder={t(c.email, lang)}
@@ -230,7 +230,7 @@ const ContactSection = () => {
                     value={form.message}
                       onChange={(e) => { setForm({ ...form, message: e.target.value }); setErrors({ ...errors, message: "" }); }}
                     rows={3}
-                    className={`${inputClass('message')} resize-none`}
+                      className={`${inputClass('message')} resize-none`}
                       aria-invalid={Boolean(errors.message)}
                   />
                   <p className="text-[12px] text-destructive font-medium min-h-4 -mt-1">{errors.message || ""}</p>
@@ -238,7 +238,7 @@ const ContactSection = () => {
                     type="button"
                     onClick={handleSubmit}
                     disabled={sending}
-                    className="group inline-flex items-center justify-center gap-4 bg-accent text-accent-foreground px-8 py-4 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors w-full disabled:opacity-70"
+                    className="group inline-flex items-center justify-center gap-3 bg-accent text-accent-foreground px-7 py-3 rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-yellow-hover transition-colors w-full disabled:opacity-70"
                   >
                     <div className="flex flex-col">
                       <span className="font-extrabold text-[14px] uppercase tracking-[0.15em]">
