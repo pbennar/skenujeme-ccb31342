@@ -26,8 +26,7 @@ const ContactSection = () => {
   const [form, setForm] = useState({
     name: "",
     company: "",
-    phoneCode: "+421",
-    phone: "",
+    phone: "+421",
     email: "",
     message: "",
   });
@@ -36,18 +35,23 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  const selectedCountry = COUNTRY_CODES.find((country) => country.code === form.phoneCode) ?? COUNTRY_CODES[0];
+  const detectedCountry = [...COUNTRY_CODES]
+    .sort((a, b) => b.code.length - a.code.length)
+    .find((country) => form.phone.startsWith(country.code)) ?? COUNTRY_CODES[0];
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
     const email = form.email.trim();
-    const phoneDigits = form.phone.replace(/\D/g, "");
+    const compactPhone = form.phone.replace(/\s+/g, "").trim();
+    const localNumber = compactPhone.startsWith(detectedCountry.code)
+      ? compactPhone.slice(detectedCountry.code.length).replace(/\D/g, "")
+      : "";
 
     if (!form.name.trim()) newErrors.name = t(c.required, lang);
     if (!form.company.trim()) newErrors.company = t(c.required, lang);
-    if (!phoneDigits) {
+    if (!compactPhone || compactPhone === detectedCountry.code) {
       newErrors.phone = t(c.required, lang);
-    } else if (phoneDigits.length < selectedCountry.minLength || phoneDigits.length > selectedCountry.maxLength) {
+    } else if (localNumber.length < detectedCountry.minLength || localNumber.length > detectedCountry.maxLength) {
       newErrors.phone = t(c.phoneInvalid, lang);
     }
     if (!email) {
@@ -67,12 +71,11 @@ const ContactSection = () => {
     setSubmitError("");
 
     try {
-      const fullPhone = `${form.phoneCode} ${form.phone.replace(/\D/g, "")}`;
       const { error } = await supabase.functions.invoke("submit-contact", {
         body: {
           name: form.name.trim(),
           company: form.company.trim(),
-          phone: fullPhone,
+          phone: form.phone.trim(),
           email: form.email.trim(),
           message: form.message.trim(),
         },
@@ -81,7 +84,7 @@ const ContactSection = () => {
       if (error) throw error;
 
       setSubmitted(true);
-      setForm({ name: "", company: "", phoneCode: "+421", phone: "", email: "", message: "" });
+      setForm({ name: "", company: "", phone: "+421", email: "", message: "" });
       setErrors({});
     } catch (err) {
       console.error("Submit error:", err);
@@ -177,39 +180,23 @@ const ContactSection = () => {
                   </div>
                   <div className="space-y-0.5">
                     <div className={cn(
-                      "grid grid-cols-[118px_minmax(0,1fr)] gap-2",
+                      "flex items-center rounded-md border bg-background px-3",
+                      errors.phone ? "border-destructive" : "border-border",
                     )}>
-                      <div className={cn(
-                        "flex items-center rounded-md border bg-background px-3",
-                        errors.phone ? "border-destructive" : "border-border",
-                      )}>
-                        <span className="text-[18px] leading-none mr-2" aria-hidden="true">{selectedCountry.flag}</span>
-                        <select
-                          value={form.phoneCode}
-                          onChange={(e) => { setForm({ ...form, phoneCode: e.target.value }); setErrors({ ...errors, phone: "" }); }}
-                          className="w-full bg-transparent text-body font-medium text-foreground focus:outline-none"
-                          aria-label={t(c.phoneCode, lang)}
-                        >
-                          {COUNTRY_CODES.map((country) => (
-                            <option key={country.code} value={country.code}>
-                              {country.code}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      <span className="text-[18px] leading-none mr-2" aria-hidden="true">{detectedCountry.flag}</span>
                       <input
                         type="tel"
-                        inputMode="numeric"
-                        placeholder={selectedCountry.placeholder}
+                        inputMode="tel"
+                        placeholder={detectedCountry.code}
                         value={form.phone}
                         onChange={(e) => {
-                          const digitsOnly = e.target.value.replace(/\D/g, "");
-                          setForm({ ...form, phone: digitsOnly });
+                          const sanitized = e.target.value.replace(/[^\d+\s]/g, "");
+                          setForm({ ...form, phone: sanitized });
                           setErrors({ ...errors, phone: "" });
                         }}
-                        className={inputClass('phone')}
+                        className="w-full bg-transparent py-2 text-body text-foreground placeholder:text-gray-text focus:outline-none"
                         aria-invalid={Boolean(errors.phone)}
-                        maxLength={selectedCountry.maxLength}
+                        maxLength={18}
                       />
                     </div>
                     <p className="text-[12px] text-destructive font-medium min-h-4">{errors.phone || ""}</p>
