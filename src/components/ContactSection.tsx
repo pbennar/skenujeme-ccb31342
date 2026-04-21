@@ -26,8 +26,7 @@ const ContactSection = () => {
   const [form, setForm] = useState({
     name: "",
     company: "",
-    phoneCode: "+421",
-    phone: "",
+    phone: "+421",
     email: "",
     message: "",
   });
@@ -36,18 +35,23 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  const selectedCountry = COUNTRY_CODES.find((country) => country.code === form.phoneCode) ?? COUNTRY_CODES[0];
+  const detectedCountry = [...COUNTRY_CODES]
+    .sort((a, b) => b.code.length - a.code.length)
+    .find((country) => form.phone.startsWith(country.code)) ?? COUNTRY_CODES[0];
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
     const email = form.email.trim();
-    const phoneDigits = form.phone.replace(/\D/g, "");
+    const compactPhone = form.phone.replace(/\s+/g, "").trim();
+    const localNumber = compactPhone.startsWith(detectedCountry.code)
+      ? compactPhone.slice(detectedCountry.code.length).replace(/\D/g, "")
+      : "";
 
     if (!form.name.trim()) newErrors.name = t(c.required, lang);
     if (!form.company.trim()) newErrors.company = t(c.required, lang);
-    if (!phoneDigits) {
+    if (!compactPhone || compactPhone === detectedCountry.code) {
       newErrors.phone = t(c.required, lang);
-    } else if (phoneDigits.length < selectedCountry.minLength || phoneDigits.length > selectedCountry.maxLength) {
+    } else if (localNumber.length < detectedCountry.minLength || localNumber.length > detectedCountry.maxLength) {
       newErrors.phone = t(c.phoneInvalid, lang);
     }
     if (!email) {
@@ -67,12 +71,11 @@ const ContactSection = () => {
     setSubmitError("");
 
     try {
-      const fullPhone = `${form.phoneCode} ${form.phone.replace(/\D/g, "")}`;
       const { error } = await supabase.functions.invoke("submit-contact", {
         body: {
           name: form.name.trim(),
           company: form.company.trim(),
-          phone: fullPhone,
+          phone: form.phone.trim(),
           email: form.email.trim(),
           message: form.message.trim(),
         },
@@ -81,7 +84,7 @@ const ContactSection = () => {
       if (error) throw error;
 
       setSubmitted(true);
-      setForm({ name: "", company: "", phoneCode: "+421", phone: "", email: "", message: "" });
+      setForm({ name: "", company: "", phone: "+421", email: "", message: "" });
       setErrors({});
     } catch (err) {
       console.error("Submit error:", err);
