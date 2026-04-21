@@ -236,7 +236,7 @@ export const translations = {
     subtextBold: { sk: "Stačí sa nám len ozvať.", en: "Just get in touch." },
     formTitle: { sk: "Potrebujem 3D skenovanie", en: "I need 3D scanning" },
     formSubtitle: { sk: "Čoskoro sa Vám ozveme", en: "We'll get back to you soon" },
-    name: { sk: "Meno *", en: "Name *" },
+    name: { sk: "Meno a priezvisko *", en: "Name and surname *" },
     company: { sk: "Firma *", en: "Company *" },
     phone: { sk: "Mobil *", en: "Phone *" },
     phoneCode: { sk: "Predvoľba", en: "Dial code" },
