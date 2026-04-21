@@ -150,31 +150,31 @@ const ContactSection = () => {
                 {submitError && (
                   <p className="text-[12px] text-destructive font-medium mb-3">{submitError}</p>
                 )}
-                <div className="flex flex-col gap-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input
-                      type="text"
-                      placeholder={t(c.name, lang)}
-                      value={form.name}
-                      onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: "" }); }}
-                      className={inputClass('name')}
-                      aria-invalid={Boolean(errors.name)}
-                    />
-                    <input
-                      type="text"
-                      placeholder={t(c.company, lang)}
-                      value={form.company}
-                      onChange={(e) => { setForm({ ...form, company: e.target.value }); setErrors({ ...errors, company: "" }); }}
-                      className={inputClass('company')}
-                      aria-invalid={Boolean(errors.company)}
-                    />
-                  </div>
-                  {(errors.name || errors.company) && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 -mt-1">
+                <div className="flex flex-col gap-2">
+                  <div className="space-y-1.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        placeholder={t(c.name, lang)}
+                        value={form.name}
+                        onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: "" }); }}
+                        className={inputClass('name')}
+                        aria-invalid={Boolean(errors.name)}
+                      />
+                      <input
+                        type="text"
+                        placeholder={t(c.company, lang)}
+                        value={form.company}
+                        onChange={(e) => { setForm({ ...form, company: e.target.value }); setErrors({ ...errors, company: "" }); }}
+                        className={inputClass('company')}
+                        aria-invalid={Boolean(errors.company)}
+                      />
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <p className="text-[12px] text-destructive font-medium min-h-4">{errors.name || ""}</p>
                       <p className="text-[12px] text-destructive font-medium min-h-4">{errors.company || ""}</p>
                     </div>
-                  )}
+                  </div>
                   <div className="space-y-1.5">
                     <div className={cn(
                       "grid grid-cols-[118px_minmax(0,1fr)] gap-2",
