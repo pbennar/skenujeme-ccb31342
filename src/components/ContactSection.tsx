@@ -128,7 +128,7 @@ const ContactSection = () => {
             </p>
           </div>
 
-          <div className="bg-background rounded-lg p-5 shadow-lg max-w-[380px] lg:ml-auto" data-reveal="right" data-reveal-delay="2">
+          <div className="bg-background rounded-lg p-4 shadow-lg max-w-[380px] lg:ml-auto" data-reveal="right" data-reveal-delay="2">
             {submitted ? (
               <div className="text-center py-10">
                 <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -150,8 +150,8 @@ const ContactSection = () => {
                 {submitError && (
                   <p className="text-[12px] text-destructive font-medium mb-3">{submitError}</p>
                 )}
-                <div className="flex flex-col gap-1.5">
-                  <div className="space-y-1">
+                <div className="flex flex-col gap-1">
+                  <div className="space-y-0.5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <input
                         type="text"
@@ -175,7 +175,7 @@ const ContactSection = () => {
                       <p className="text-[12px] text-destructive font-medium min-h-4">{errors.company || ""}</p>
                     </div>
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-0.5">
                     <div className={cn(
                       "grid grid-cols-[118px_minmax(0,1fr)] gap-2",
                     )}>
@@ -214,7 +214,7 @@ const ContactSection = () => {
                     </div>
                     <p className="text-[12px] text-destructive font-medium min-h-4">{errors.phone || ""}</p>
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-0.5">
                     <input
                       type="email"
                       placeholder={t(c.email, lang)}
